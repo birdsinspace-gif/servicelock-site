@@ -1,12 +1,12 @@
 export const metadata = {
   title: "ServiceLock",
-  description: "Turn missed calls into booked jobs"
+  description: "Turn missed calls into booked jobs",
 };
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: import("react").ReactNode;
 }) {
   return (
     <html lang="en">
