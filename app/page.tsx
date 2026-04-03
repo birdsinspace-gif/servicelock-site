@@ -1,8 +1,8 @@
-import { Inter, Sora } from "next/font/google";
+import { Inter, Oswald } from "next/font/google";
 
-const heading = Sora({
+const heading = Oswald({
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
+  weight: ["500", "600", "700"],
 });
 
 const body = Inter({
@@ -35,15 +35,15 @@ export default function Home() {
   const card: React.CSSProperties = {
     background: `linear-gradient(180deg, ${c.card}, ${c.secondary})`,
     border: `1px solid ${c.border}`,
-    borderRadius: 24,
+    borderRadius: 22,
     padding: 28,
-    boxShadow: "0 12px 40px rgba(0,0,0,0.20)",
+    boxShadow: "0 14px 40px rgba(0,0,0,0.20)",
   };
 
   const sectionHeading: React.CSSProperties = {
-    fontSize: "clamp(30px, 4vw, 44px)",
-    lineHeight: 1.05,
-    letterSpacing: "-0.03em",
+    fontSize: "clamp(30px, 4vw, 42px)",
+    lineHeight: 1,
+    letterSpacing: "-0.02em",
     textAlign: "center",
     margin: "0 0 14px",
   };
@@ -55,6 +55,15 @@ export default function Home() {
     color: c.muted,
     fontSize: 18,
     lineHeight: 1.75,
+  };
+
+  const pill: React.CSSProperties = {
+    padding: "11px 15px",
+    borderRadius: 999,
+    background: "rgba(255,255,255,0.03)",
+    border: `1px solid ${c.border}`,
+    fontWeight: 700,
+    fontSize: 14,
   };
 
   return (
@@ -103,10 +112,9 @@ export default function Home() {
             <div
               className={heading.className}
               style={{
-                fontSize: 20,
-                fontWeight: 700,
-                letterSpacing: "-0.02em",
+                fontSize: 24,
                 lineHeight: 1,
+                letterSpacing: "0.01em",
               }}
             >
               ServiceLock
@@ -115,7 +123,7 @@ export default function Home() {
               style={{
                 color: c.muted,
                 fontSize: 12,
-                marginTop: 3,
+                marginTop: 4,
               }}
             >
               Missed call recovery for service businesses
@@ -144,7 +152,7 @@ export default function Home() {
         style={{
           ...wrap,
           paddingTop: 64,
-          paddingBottom: 64,
+          paddingBottom: 56,
           textAlign: "center",
         }}
       >
@@ -169,12 +177,11 @@ export default function Home() {
         <h1
           className={heading.className}
           style={{
-            fontSize: "clamp(42px, 7vw, 68px)",
-            lineHeight: 0.98,
-            letterSpacing: "-0.045em",
+            fontSize: "clamp(44px, 7vw, 70px)",
+            lineHeight: 0.95,
+            letterSpacing: "-0.03em",
             margin: "0 auto 22px",
             maxWidth: 920,
-            fontWeight: 800,
           }}
         >
           We Recover Your Missed Calls
@@ -185,7 +192,7 @@ export default function Home() {
         <div
           style={{
             maxWidth: 760,
-            margin: "0 auto 28px",
+            margin: "0 auto 30px",
             color: c.muted,
             fontSize: 20,
             lineHeight: 1.75,
@@ -195,7 +202,7 @@ export default function Home() {
           <div>You’re on a job, driving, under a house, or up on a roof.</div>
           <div>They hang up and call the next company.</div>
           <div style={{ color: c.fg, fontWeight: 700, marginTop: 8 }}>
-            We stop that from happening.
+            We stop that.
           </div>
         </div>
 
@@ -252,7 +259,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section style={{ ...wrap, paddingBottom: 24 }}>
+      <section style={{ ...wrap, paddingBottom: 28 }}>
         <div
           style={{
             display: "grid",
@@ -263,7 +270,7 @@ export default function Home() {
           {[
             {
               title: "You are already paying for the phone to ring",
-              text: "If you spend money on ads, referrals, trucks, dispatch, techs, or office staff, losing inbound calls is pure waste.",
+              text: "Ads. Trucks. Labor. Time. If you are paying to make the phone ring, missed calls are pure waste.",
             },
             {
               title: "Missed calls become missed revenue",
@@ -271,19 +278,18 @@ export default function Home() {
             },
             {
               title: "The fastest response usually wins",
-              text: "The company that responds first usually gets the callback. ServiceLock helps make sure that company is you.",
+              text: "The company that responds first gets the callback. ServiceLock helps make sure that company is you.",
             },
           ].map((item) => (
             <div key={item.title} style={card}>
               <div
                 className={heading.className}
                 style={{
-                  fontSize: 22,
-                  lineHeight: 1.15,
-                  letterSpacing: "-0.02em",
+                  fontSize: 24,
+                  lineHeight: 1.05,
+                  letterSpacing: "-0.01em",
                   marginBottom: 10,
                   textAlign: "center",
-                  fontWeight: 700,
                 }}
               >
                 {item.title}
@@ -308,8 +314,8 @@ export default function Home() {
           How ServiceLock Works
         </h2>
         <p style={{ ...sectionText, marginBottom: 28 }}>
-          You simply forward your business number to us, or we set it up in
-          minutes. When you miss a call, ServiceLock steps in immediately.
+          Forward your business number to us, or we set it up in minutes. When you
+          miss a call, ServiceLock steps in immediately.
         </p>
 
         <div
@@ -333,7 +339,7 @@ export default function Home() {
             {
               n: "3",
               title: "Clean Lead Summary",
-              text: "You get the key details by text or email. You just follow up and book the job.",
+              text: "You get the key details by text or email. You follow up. You close it.",
             },
           ].map((item) => (
             <div key={item.n} style={card}>
@@ -357,12 +363,11 @@ export default function Home() {
               <div
                 className={heading.className}
                 style={{
-                  fontSize: 22,
-                  lineHeight: 1.15,
-                  letterSpacing: "-0.02em",
+                  fontSize: 24,
+                  lineHeight: 1.05,
+                  letterSpacing: "-0.01em",
                   marginBottom: 10,
                   textAlign: "center",
-                  fontWeight: 700,
                 }}
               >
                 {item.title}
@@ -425,9 +430,8 @@ export default function Home() {
               margin: "0 auto 12px",
               textAlign: "center",
               fontSize: "clamp(30px, 4vw, 42px)",
-              lineHeight: 1.12,
-              letterSpacing: "-0.03em",
-              fontWeight: 800,
+              lineHeight: 1.08,
+              letterSpacing: "-0.02em",
             }}
           >
             One to two recovered jobs usually covers the entire cost.
@@ -443,8 +447,7 @@ export default function Home() {
               textAlign: "center",
             }}
           >
-            Three or more recovered jobs is pure profit. Most service businesses
-            should see value quickly.
+            Three or more recovered jobs is pure profit.
           </div>
         </div>
       </section>
@@ -478,9 +481,8 @@ export default function Home() {
               margin: "0 auto 12px",
               textAlign: "center",
               fontSize: "clamp(30px, 4vw, 42px)",
-              lineHeight: 1.12,
-              letterSpacing: "-0.03em",
-              fontWeight: 800,
+              lineHeight: 1.08,
+              letterSpacing: "-0.02em",
             }}
           >
             One missed emergency or quote call can cost $500 to $8,000+.
@@ -523,11 +525,10 @@ export default function Home() {
             className={heading.className}
             style={{
               fontSize: "clamp(34px, 5vw, 54px)",
-              lineHeight: 1.02,
-              letterSpacing: "-0.04em",
+              lineHeight: 1,
+              letterSpacing: "-0.03em",
               textAlign: "center",
               margin: "0 0 12px",
-              fontWeight: 800,
             }}
           >
             Only $349 per month
@@ -556,23 +557,10 @@ export default function Home() {
               marginBottom: 26,
             }}
           >
-            {["Unlimited leads & texts", "No setup fee", "No contract", "Cancel anytime"].map(
-              (item) => (
-                <div
-                  key={item}
-                  style={{
-                    padding: "11px 15px",
-                    borderRadius: 999,
-                    background: "rgba(255,255,255,0.03)",
-                    border: `1px solid ${c.border}`,
-                    fontWeight: 700,
-                    fontSize: 14,
-                  }}
-                >
-                  {item}
-                </div>
-              )
-            )}
+            <div style={pill}>Unlimited leads & texts</div>
+            <div style={pill}>No setup fee</div>
+            <div style={pill}>No contract</div>
+            <div style={pill}>Cancel anytime</div>
           </div>
 
           <div
@@ -586,10 +574,9 @@ export default function Home() {
               className={heading.className}
               style={{
                 fontSize: "clamp(28px, 3.5vw, 38px)",
-                lineHeight: 1.1,
-                letterSpacing: "-0.03em",
+                lineHeight: 1.05,
+                letterSpacing: "-0.02em",
                 marginBottom: 10,
-                fontWeight: 800,
               }}
             >
               Ready to stop losing jobs to missed calls?
