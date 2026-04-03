@@ -1,533 +1,157 @@
-export default function HomePage() {
-  const styles = {
-    page: {
-      minHeight: "100vh",
-      backgroundColor: "#0B1020",
-      color: "#FFFFFF",
-      fontFamily:
-        'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-      margin: 0,
-    } as const,
-    container: {
-      maxWidth: "1180px",
-      margin: "0 auto",
-      padding: "0 24px",
-    } as const,
-    section: {
-      padding: "96px 0",
-      borderBottom: "1px solid rgba(255,255,255,0.10)",
-    } as const,
-    topBar: {
-      display: "flex",
-      alignItems: "center",
-      gap: "14px",
-      marginBottom: "48px",
-    } as const,
-    logoBox: {
-      width: "42px",
-      height: "42px",
-      borderRadius: "12px",
-      backgroundColor: "#F59E0B",
-      color: "#0B1020",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      fontWeight: 800,
-      fontSize: "18px",
-      flexShrink: 0,
-    } as const,
-    brandName: {
-      fontSize: "20px",
-      fontWeight: 700,
-      margin: 0,
-    } as const,
-    brandSub: {
-      fontSize: "14px",
-      color: "rgba(255,255,255,0.60)",
-      margin: "4px 0 0 0",
-    } as const,
-    heroGrid: {
-      display: "grid",
-      gridTemplateColumns: "1.15fr 0.85fr",
-      gap: "56px",
-      alignItems: "center",
-    } as const,
-    badge: {
-      display: "inline-block",
-      padding: "10px 16px",
-      borderRadius: "999px",
-      border: "1px solid rgba(255,255,255,0.10)",
-      backgroundColor: "rgba(255,255,255,0.05)",
-      color: "rgba(255,255,255,0.78)",
-      fontSize: "14px",
-      marginBottom: "24px",
-    } as const,
-    h1: {
-      fontSize: "64px",
-      lineHeight: 1.02,
-      letterSpacing: "-0.04em",
-      fontWeight: 800,
-      margin: 0,
-      maxWidth: "780px",
-    } as const,
-    highlight: {
-      display: "block",
-      color: "#F59E0B",
-    } as const,
-    heroLines: {
-      marginTop: "32px",
-      fontSize: "28px",
-      lineHeight: 1.45,
-      color: "rgba(255,255,255,0.84)",
-    } as const,
-    heroLine: {
-      margin: "0 0 6px 0",
-    } as const,
-    heroLineStrong: {
-      margin: "0",
-      fontWeight: 700,
-      color: "#FFFFFF",
-    } as const,
-    body: {
-      marginTop: "32px",
-      maxWidth: "720px",
-      fontSize: "21px",
-      lineHeight: 1.7,
-      color: "rgba(255,255,255,0.72)",
-    } as const,
-    ctaRow: {
-      display: "flex",
-      gap: "16px",
-      flexWrap: "wrap",
-      marginTop: "36px",
-    } as const,
-    primaryBtn: {
-      display: "inline-block",
-      padding: "16px 24px",
-      borderRadius: "16px",
-      backgroundColor: "#F59E0B",
-      color: "#0B1020",
-      textDecoration: "none",
-      fontWeight: 700,
-      fontSize: "16px",
-    } as const,
-    secondaryBtn: {
-      display: "inline-block",
-      padding: "16px 24px",
-      borderRadius: "16px",
-      border: "1px solid rgba(255,255,255,0.14)",
-      backgroundColor: "rgba(255,255,255,0.05)",
-      color: "#FFFFFF",
-      textDecoration: "none",
-      fontWeight: 700,
-      fontSize: "16px",
-    } as const,
-    card: {
-      border: "1px solid rgba(255,255,255,0.10)",
-      backgroundColor: "rgba(255,255,255,0.04)",
-      borderRadius: "28px",
-      padding: "32px",
-      boxShadow: "0 24px 60px rgba(0,0,0,0.28)",
-    } as const,
-    cardEyebrow: {
-      fontSize: "12px",
-      textTransform: "uppercase" as const,
-      letterSpacing: "0.20em",
-      color: "#F59E0B",
-      margin: 0,
-    } as const,
-    cardTitle: {
-      fontSize: "32px",
-      lineHeight: 1.15,
-      fontWeight: 700,
-      margin: "14px 0 0 0",
-    } as const,
-    bulletWrap: {
-      marginTop: "28px",
-      display: "grid",
-      gap: "14px",
-    } as const,
-    bullet: {
-      border: "1px solid rgba(255,255,255,0.10)",
-      backgroundColor: "rgba(0,0,0,0.18)",
-      borderRadius: "18px",
-      padding: "16px 18px",
-      color: "rgba(255,255,255,0.76)",
-      lineHeight: 1.6,
-      fontSize: "16px",
-    } as const,
-    priceBox: {
-      marginTop: "28px",
-      border: "1px solid rgba(245,158,11,0.24)",
-      backgroundColor: "rgba(245,158,11,0.10)",
-      borderRadius: "18px",
-      padding: "20px",
-    } as const,
-    priceSmall: {
-      fontSize: "12px",
-      textTransform: "uppercase" as const,
-      letterSpacing: "0.20em",
-      color: "#F59E0B",
-      margin: 0,
-    } as const,
-    priceBig: {
-      fontSize: "40px",
-      fontWeight: 800,
-      margin: "10px 0 0 0",
-    } as const,
-    priceCopy: {
-      fontSize: "16px",
-      color: "rgba(255,255,255,0.72)",
-      margin: "10px 0 0 0",
-      lineHeight: 1.6,
-    } as const,
-    sectionEyebrow: {
-      fontSize: "12px",
-      textTransform: "uppercase" as const,
-      letterSpacing: "0.20em",
-      color: "#F59E0B",
-      margin: 0,
-      fontWeight: 700,
-    } as const,
-    sectionTitle: {
-      fontSize: "50px",
-      lineHeight: 1.08,
-      fontWeight: 800,
-      letterSpacing: "-0.03em",
-      margin: "18px 0 0 0",
-      maxWidth: "860px",
-    } as const,
-    sectionText: {
-      fontSize: "20px",
-      lineHeight: 1.75,
-      color: "rgba(255,255,255,0.72)",
-      margin: "24px 0 0 0",
-      maxWidth: "760px",
-    } as const,
-    threeGrid: {
-      marginTop: "56px",
-      display: "grid",
-      gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-      gap: "22px",
-    } as const,
-    tile: {
-      border: "1px solid rgba(255,255,255,0.10)",
-      backgroundColor: "rgba(255,255,255,0.04)",
-      borderRadius: "28px",
-      padding: "32px",
-    } as const,
-    tileSmall: {
-      fontSize: "12px",
-      textTransform: "uppercase" as const,
-      letterSpacing: "0.20em",
-      color: "rgba(255,255,255,0.48)",
-      margin: 0,
-      fontWeight: 700,
-    } as const,
-    tileBig: {
-      fontSize: "54px",
-      lineHeight: 1,
-      fontWeight: 800,
-      margin: "28px 0 0 0",
-      letterSpacing: "-0.04em",
-    } as const,
-    tileLabel: {
-      margin: "18px 0 0 0",
-      color: "rgba(255,255,255,0.68)",
-      fontSize: "17px",
-      lineHeight: 1.6,
-    } as const,
-    statementBox: {
-      marginTop: "32px",
-      border: "1px solid rgba(245,158,11,0.24)",
-      backgroundColor: "rgba(245,158,11,0.10)",
-      borderRadius: "28px",
-      padding: "28px",
-    } as const,
-    statementText: {
-      margin: 0,
-      fontSize: "30px",
-      lineHeight: 1.35,
-      fontWeight: 700,
-    } as const,
-    stepNum: {
-      fontSize: "13px",
-      fontWeight: 700,
-      color: "rgba(255,255,255,0.45)",
-      letterSpacing: "0.20em",
-      margin: 0,
-    } as const,
-    stepTitle: {
-      margin: "24px 0 0 0",
-      fontSize: "30px",
-      lineHeight: 1.2,
-      fontWeight: 700,
-    } as const,
-    stepText: {
-      margin: "16px 0 0 0",
-      color: "rgba(255,255,255,0.70)",
-      fontSize: "18px",
-      lineHeight: 1.75,
-    } as const,
-    pricingBox: {
-      border: "1px solid rgba(245,158,11,0.22)",
-      background:
-        "linear-gradient(180deg, rgba(245,158,11,0.10) 0%, rgba(255,255,255,0.03) 100%)",
-      borderRadius: "34px",
-      padding: "56px 36px",
-      textAlign: "center" as const,
-    } as const,
-    chips: {
-      marginTop: "30px",
-      display: "flex",
-      justifyContent: "center",
-      gap: "12px",
-      flexWrap: "wrap" as const,
-    } as const,
-    chip: {
-      padding: "10px 16px",
-      borderRadius: "999px",
-      border: "1px solid rgba(255,255,255,0.10)",
-      backgroundColor: "rgba(255,255,255,0.05)",
-      color: "rgba(255,255,255,0.78)",
-      fontSize: "14px",
-    } as const,
-    profitLines: {
-      marginTop: "32px",
-      display: "grid",
-      gap: "10px",
-      fontSize: "22px",
-      color: "rgba(255,255,255,0.88)",
-      lineHeight: 1.5,
-    } as const,
-    closeWrap: {
-      textAlign: "center" as const,
-      maxWidth: "860px",
-      margin: "0 auto",
-    } as const,
-    closeText: {
-      margin: "24px auto 0 auto",
-      maxWidth: "760px",
-      fontSize: "21px",
-      lineHeight: 1.75,
-      color: "rgba(255,255,255,0.72)",
-    } as const,
-  };
-
+export default function ServiceLockLandingPage() {
   return (
-    <main style={styles.page}>
-      <section style={styles.section}>
-        <div style={styles.container}>
-          <div style={styles.topBar}>
-            <div style={styles.logoBox}>S</div>
+    <div className="min-h-screen bg-[hsl(220_20%_7%)] text-[hsl(40_20%_95%)]" style={{ fontFamily: "'Archivo Black', 'Russo One', 'Teko', 'Bebas Neue', system-ui, sans-serif" }}>
+      <main className="mx-auto max-w-6xl px-6 pt-6 pb-10">
+
+        {/* HERO - SIMPLIFIED + ROI PUNCH */}
+        <section className="pt-10 pb-16 text-center">
+          <div className="mb-6 flex items-center justify-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[hsl(220_18%_10%)] border border-[hsl(272_15%_18%)] text-[hsl(38_92%_50%)] font-semibold">S</div>
             <div>
-              <p style={styles.brandName}>ServiceLock</p>
-              <p style={styles.brandSub}>Missed call recovery for service businesses</p>
+              <div className="font-semibold">ServiceLock</div>
+              <div className="text-xs text-[hsl(220_10%_55%)]">Missed call recovery for service businesses</div>
             </div>
           </div>
 
-          <div style={styles.heroGrid}>
-            <div>
-              <div style={styles.badge}>Built for busy service teams</div>
+          <h1 className="text-5xl sm:text-6xl font-bold leading-tight tracking-tight max-w-3xl mx-auto">
+            Turned Missed Calls into
+            <span className="block text-[hsl(38_92%_50%)]">Recovered Jobs</span>
+          </h1>
 
-              <h1 style={styles.h1}>
-                Turn Missed Calls Into
-                <span style={styles.highlight}>Thousands in Recovered Jobs</span>
-              </h1>
-
-              <div style={styles.heroLines}>
-                <p style={styles.heroLine}>They call once.</p>
-                <p style={styles.heroLine}>You&apos;re busy.</p>
-                <p style={styles.heroLine}>They call the next company.</p>
-                <p style={styles.heroLineStrong}>That job is gone.</p>
-              </div>
-
-              <p style={styles.body}>
-                ServiceLock recovers those jobs automatically. We text them instantly,
-                qualify the lead, and send you a ready-to-book opportunity before your
-                competitor gets it.
-              </p>
-
-              <div style={styles.ctaRow}>
-                <a href="tel:9142668127" style={styles.primaryBtn}>
-                  Call the Live Demo: (914) 266-8127
-                </a>
-                <a href="#pricing" style={styles.secondaryBtn}>
-                  Pricing
-                </a>
-              </div>
-            </div>
-
-            <div style={styles.card}>
-              <p style={styles.cardEyebrow}>Why this works</p>
-              <h2 style={styles.cardTitle}>
-                The first company to respond usually wins
-              </h2>
-
-              <div style={styles.bulletWrap}>
-                <div style={styles.bullet}>Missed callers rarely leave voicemails.</div>
-                <div style={styles.bullet}>
-                  Emergency and quote calls move to the next company fast.
-                </div>
-                <div style={styles.bullet}>
-                  Speed wins, especially after hours and on busy days.
-                </div>
-                <div style={styles.bullet}>
-                  One recovered job can easily pay for the service.
-                </div>
-              </div>
-
-              <div style={styles.priceBox}>
-                <p style={styles.priceSmall}>Simple offer</p>
-                <p style={styles.priceBig}>$497/month</p>
-                <p style={styles.priceCopy}>
-                  No setup fee. No contract. Cancel anytime.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section style={styles.section}>
-        <div style={styles.container}>
-          <p style={styles.sectionEyebrow}>ROI</p>
-          <h2 style={styles.sectionTitle}>
-            You&apos;re Losing Real Money Every Time You Miss a Call
-          </h2>
-          <p style={styles.sectionText}>
-            Miss just a few calls per week and you&apos;re losing thousands every month.
+          {/* ROI PUNCH */}
+          <p className="mt-6 text-lg sm:text-xl text-[hsl(38_92%_50%)] font-semibold">
+            Miss a call → Lose a job
           </p>
 
-          <div style={styles.threeGrid}>
-            <div style={styles.tile}>
-              <p style={styles.tileSmall}>Missed value</p>
-              <p style={styles.tileBig}>$500</p>
-              <p style={styles.tileLabel}>Small repair or service call</p>
-            </div>
+          {/* Minimal narrative */}
+          <div className="mt-6 flex flex-wrap justify-center items-center gap-4 text-sm text-[hsl(220_10%_55%)]">
+            <span>They call once</span>
+            <span>•</span>
+            <span>You're busy</span>
+            <span>•</span>
+            <span>They call the next company</span>
+          </div>
 
-            <div style={styles.tile}>
-              <p style={styles.tileSmall}>Missed value</p>
-              <p style={styles.tileBig}>$1,500</p>
-              <p style={styles.tileLabel}>Mid-sized job or urgent issue</p>
-            </div>
+          <div className="mt-10 flex justify-center gap-4">
+            <a href="tel:+19142668127" className="bg-[hsl(38_92%_50%)] text-[hsl(220_20%_7%)] px-6 py-3 rounded-xl font-semibold">
+              Call the Live Demo: (914) 266-8127
+            </a>
+            <a href="#pricing" className="border border-[hsl(272_15%_18%)] px-6 py-3 rounded-xl">
+              Pricing
+            </a>
+          </div>
+        </section>
 
-            <div style={styles.tile}>
-              <p style={styles.tileSmall}>Missed value</p>
-              <p style={styles.tileBig}>$5,000+</p>
-              <p style={styles.tileLabel}>High-value project or replacement</p>
+        {/* ROI */}
+        <section className="py-20 text-center">
+          <h2 className="text-3xl font-bold tracking-tight">You’re Losing Real Money Every Time You Miss a Call</h2>
+          <p className="mt-4 text-[hsl(220_10%_55%)] max-w-2xl mx-auto">
+            Miss just a few calls per week and you’re losing thousands every month.
+          </p>
+
+          <div className="mt-10 grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <div className="bg-[hsl(220_18%_10%)] border border-[hsl(272_15%_18%)] rounded-xl p-6">
+              <p className="text-xs text-[hsl(220_10%_55%)]">Missed value</p>
+              <p className="text-3xl text-[hsl(38_92%_50%)] font-semibold mt-2">$500</p>
+              <p className="text-sm mt-2">Small repair or service call</p>
+            </div>
+            <div className="bg-[hsl(220_18%_10%)] border border-[hsl(272_15%_18%)] rounded-xl p-6">
+              <p className="text-xs text-[hsl(220_10%_55%)]">Missed value</p>
+              <p className="text-3xl text-[hsl(38_92%_50%)] font-semibold mt-2">$1,500</p>
+              <p className="text-sm mt-2">Mid-sized job or urgent issue</p>
+            </div>
+            <div className="bg-[hsl(220_18%_10%)] border border-[hsl(272_15%_18%)] rounded-xl p-6">
+              <p className="text-xs text-[hsl(220_10%_55%)]">Missed value</p>
+              <p className="text-3xl text-[hsl(38_92%_50%)] font-semibold mt-2">$5,000+</p>
+              <p className="text-sm mt-2">High-value project or replacement</p>
             </div>
           </div>
 
-          <div style={styles.statementBox}>
-            <p style={styles.statementText}>
-              Right now, when you miss the call, your competitor gets the chance to win it.
-            </p>
-          </div>
-        </div>
-      </section>
+          <p className="mt-8 text-lg">
+            Right now, when you miss the call, your competitor gets the job.
+          </p>
+        </section>
 
-      <section style={styles.section}>
-        <div style={styles.container}>
-          <p style={styles.sectionEyebrow}>How it works</p>
-          <h2 style={styles.sectionTitle}>ServiceLock Flips That</h2>
-
-          <div style={styles.threeGrid}>
-            <div style={styles.tile}>
-              <p style={styles.stepNum}>01</p>
-              <h3 style={styles.stepTitle}>We Respond Instantly</h3>
-              <p style={styles.stepText}>
-                The moment you miss the call, we step in and text back while they&apos;re
-                still looking.
-              </p>
-            </div>
-
-            <div style={styles.tile}>
-              <p style={styles.stepNum}>02</p>
-              <h3 style={styles.stepTitle}>We Capture the Job</h3>
-              <p style={styles.stepText}>
-                We qualify the lead, gather the important details, and keep them from
-                moving on.
-              </p>
-            </div>
-
-            <div style={styles.tile}>
-              <p style={styles.stepNum}>03</p>
-              <h3 style={styles.stepTitle}>We Send You the Lead</h3>
-              <p style={styles.stepText}>
-                You get the lead, call back fast, and close with context instead of
-                starting cold.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="pricing" style={styles.section}>
-        <div style={{ ...styles.container, maxWidth: "980px" }}>
-          <div style={styles.pricingBox}>
-            <p style={styles.sectionEyebrow}>Pricing</p>
-            <h2 style={{ ...styles.sectionTitle, margin: "18px auto 0 auto", maxWidth: "none" }}>
-              $497 Per Month
+        {/* HARD TRUTH */}
+        <section className="py-20">
+          <div className="bg-[hsl(220_18%_10%)] border border-[hsl(272_15%_18%)] rounded-2xl p-10 text-center max-w-3xl mx-auto">
+            <p className="text-xs text-[hsl(220_10%_55%)]">Hard truth</p>
+            <h2 className="mt-4 text-3xl font-semibold">
+              If you miss 10 calls this week, how many jobs did you just give away?
             </h2>
-            <p style={{ ...styles.sectionText, margin: "20px auto 0 auto", maxWidth: "680px" }}>
-              Flat monthly pricing for missed call recovery, lead qualification, and lead
-              delivery.
-            </p>
+          </div>
+        </section>
 
-            <div style={styles.chips}>
-              <span style={styles.chip}>No setup fee</span>
-              <span style={styles.chip}>No contract</span>
-              <span style={styles.chip}>Cancel anytime</span>
+        {/* HOW IT WORKS */}
+        <section className="py-20 text-center">
+          <h2 className="text-2xl font-bold tracking-tight">ServiceLock Flips That</h2>
+
+          <div className="mt-8 space-y-6 max-w-2xl mx-auto">
+            <div>
+              <p className="text-[hsl(38_92%_50%)]">01</p>
+              <p className="font-semibold">We Respond Instantly</p>
+              <p className="text-[hsl(220_10%_55%)]">The moment you miss the call, we step in and text back while they’re still looking.</p>
             </div>
-
-            <div style={styles.profitLines}>
-              <div>One recovered job can cover the entire cost.</div>
-              <div>Two or more recovered jobs = profit.</div>
-              <div>Everything after that is upside.</div>
+            <div>
+              <p className="text-[hsl(38_92%_50%)]">02</p>
+              <p className="font-semibold">We Capture the Job</p>
+              <p className="text-[hsl(220_10%_55%)]">We qualify the lead, gather the important details, and keep them from moving on.</p>
             </div>
-
-            <div style={{ ...styles.ctaRow, justifyContent: "center", marginTop: "34px" }}>
-              <a href="tel:9142668127" style={styles.primaryBtn}>
-                Call the Live Demo
-              </a>
-              <a
-                href="mailto:hello@getservicelock.com?subject=ServiceLock%20Setup%20Call"
-                style={styles.secondaryBtn}
-              >
-                Book Your 15-Minute Setup Call
-              </a>
+            <div>
+              <p className="text-[hsl(38_92%_50%)]">03</p>
+              <p className="font-semibold">We Send You the Lead</p>
+              <p className="text-[hsl(220_10%_55%)]">You get the lead, call back fast, and close with context instead of starting cold.</p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section style={{ ...styles.section, borderBottom: "none" }} id="cta">
-        <div style={styles.container}>
-          <div style={styles.closeWrap}>
-            <p style={styles.sectionEyebrow}>Close</p>
-            <h2 style={{ ...styles.sectionTitle, margin: "18px auto 0 auto" }}>
-              Stop Losing Jobs To Missed Calls
-            </h2>
-            <p style={styles.closeText}>
-              Call the demo or book your 15-minute setup call and see how ServiceLock
-              helps you recover more of the calls you&apos;re already paying for.
+        {/* PRICING */}
+        <section id="pricing" className="py-20 text-center">
+          <div className="bg-[hsl(220_18%_10%)] border border-[hsl(272_15%_18%)] rounded-2xl p-10 max-w-xl mx-auto">
+            <h2 className="text-5xl text-[hsl(38_92%_50%)] font-bold tracking-tight">$497/month</h2>
+            <div className="mt-6 space-y-1 text-sm">
+              <p>No setup fee</p>
+              <p>No contract</p>
+              <p>Cancel anytime</p>
+            </div>
+            <p className="mt-6 text-[hsl(220_10%_55%)] text-sm">
+              One job covers the cost. Everything else is profit.
             </p>
+          </div>
+        </section>
 
-            <div style={{ ...styles.ctaRow, justifyContent: "center", marginTop: "36px" }}>
-              <a href="tel:9142668127" style={styles.primaryBtn}>
-                Call the Live Demo: (914) 266-8127
-              </a>
-              <a
-                href="mailto:hello@getservicelock.com?subject=ServiceLock%20Setup%20Call"
-                style={styles.secondaryBtn}
-              >
-                Book Your 15-Minute Setup Call
-              </a>
+        {/* CLOSE */}
+        <section className="py-20 text-center">
+          <h2 className="text-3xl font-bold tracking-tight">Stop Losing Jobs</h2>
+
+          <div className="mt-8 flex justify-center gap-4">
+            <a href="tel:+19142668127" className="bg-[hsl(38_92%_50%)] text-[hsl(220_20%_7%)] px-6 py-3 rounded-xl font-semibold">
+              Call the Live Demo: (914) 266-8127
+            </a>
+            <a href="#" className="border border-[hsl(272_15%_18%)] px-6 py-3 rounded-xl">
+              Book Setup Call
+            </a>
+          </div>
+        </section>
+
+              {/* FOOTER */}
+        <footer className="border-t border-[hsl(272_15%_18%)] mt-20 pt-8 pb-6 text-center">
+          <div className="flex flex-col items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[hsl(220_18%_10%)] border border-[hsl(272_15%_18%)] text-[hsl(38_92%_50%)] font-semibold">
+              S
+            </div>
+            <div className="font-semibold">ServiceLock</div>
+            <div className="text-xs text-[hsl(220_10%_55%)]">
+              Missed call recovery for service businesses
             </div>
           </div>
-        </div>
-      </section>
-    </main>
+
+          <div className="mt-6 text-xs text-[hsl(220_10%_55%)]">
+            © {new Date().getFullYear()} ServiceLock. All rights reserved.
+          </div>
+        </footer>
+
+      </main>
+    </div>
   );
 }
