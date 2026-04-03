@@ -1,3 +1,15 @@
+import { Anton, Inter } from "next/font/google";
+
+const headingFont = Anton({
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const bodyFont = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+
 export default function Home() {
   const c = {
     bg: "hsl(220 20% 7%)",
@@ -8,82 +20,101 @@ export default function Home() {
     secondary: "hsl(220 15% 15%)",
     muted: "hsl(220 10% 55%)",
     border: "hsl(220 15% 18%)",
+    glow: "rgba(245,165,3,0.18)",
   };
 
-  const wrap = {
-    maxWidth: 1160,
+  const wrap: React.CSSProperties = {
+    width: "100%",
+    maxWidth: 1180,
     margin: "0 auto",
     paddingLeft: 24,
     paddingRight: 24,
-  } as const;
-
-  const card = {
-    background: c.card,
-    border: `1px solid ${c.border}`,
-    borderRadius: 22,
-    padding: 24,
-    boxShadow: "0 10px 30px rgba(0,0,0,0.16)",
-  } as const;
-
-  const sectionTitle = {
-    fontSize: "clamp(30px, 4vw, 48px)",
-    lineHeight: 1.05,
-    letterSpacing: "-0.04em",
-    margin: "0 0 14px",
-    textAlign: "center" as const,
+    boxSizing: "border-box",
   };
 
-  const sectionText = {
-    color: c.muted,
-    fontSize: 18,
-    lineHeight: 1.7,
-    textAlign: "center" as const,
+  const card: React.CSSProperties = {
+    background: `linear-gradient(180deg, ${c.card}, ${c.secondary})`,
+    border: `1px solid ${c.border}`,
+    borderRadius: 24,
+    padding: 28,
+    boxShadow: "0 18px 60px rgba(0,0,0,0.24)",
+  };
+
+  const sectionTitle: React.CSSProperties = {
+    fontSize: "clamp(34px, 4.8vw, 58px)",
+    lineHeight: 0.95,
+    letterSpacing: "-0.03em",
+    textTransform: "uppercase",
+    textAlign: "center",
+    margin: "0 0 16px",
+  };
+
+  const sectionText: React.CSSProperties = {
     maxWidth: 760,
     margin: "0 auto",
+    textAlign: "center",
+    color: c.muted,
+    fontSize: 18,
+    lineHeight: 1.75,
   };
 
   return (
     <main
+      className={bodyFont.className}
       style={{
         minHeight: "100vh",
-        background: c.bg,
+        background: `
+          radial-gradient(circle at top, rgba(245,165,3,0.08), transparent 28%),
+          linear-gradient(180deg, #0f1318 0%, #0f1318 100%)
+        `,
         color: c.fg,
-        fontFamily:
-          'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
       }}
     >
       <header
         style={{
           ...wrap,
-          paddingTop: 22,
-          paddingBottom: 22,
+          paddingTop: 24,
+          paddingBottom: 20,
           display: "flex",
-          justifyContent: "space-between",
           alignItems: "center",
+          justifyContent: "space-between",
           gap: 16,
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
           <div
             style={{
-              width: 40,
-              height: 40,
-              borderRadius: 12,
+              width: 46,
+              height: 46,
+              borderRadius: 14,
               background: c.primary,
               color: c.primaryFg,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontWeight: 800,
-              fontSize: 18,
-              boxShadow: "0 10px 26px rgba(245,165,3,0.24)",
+              fontWeight: 900,
+              fontSize: 20,
+              boxShadow: `0 14px 34px ${c.glow}`,
               flexShrink: 0,
             }}
           >
             S
           </div>
-          <div style={{ fontWeight: 800, fontSize: 20, letterSpacing: "-0.02em" }}>
-            ServiceLock
+          <div>
+            <div
+              className={headingFont.className}
+              style={{
+                fontSize: 28,
+                lineHeight: 1,
+                letterSpacing: "0.03em",
+                textTransform: "uppercase",
+              }}
+            >
+              ServiceLock
+            </div>
+            <div style={{ color: c.muted, fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase" }}>
+              Missed Call Recovery
+            </div>
           </div>
         </div>
 
@@ -92,11 +123,11 @@ export default function Home() {
           style={{
             textDecoration: "none",
             color: c.fg,
-            background: c.secondary,
             border: `1px solid ${c.border}`,
-            borderRadius: 14,
-            padding: "12px 16px",
-            fontWeight: 700,
+            background: "rgba(255,255,255,0.03)",
+            padding: "13px 18px",
+            borderRadius: 16,
+            fontWeight: 800,
             whiteSpace: "nowrap",
           }}
         >
@@ -107,8 +138,8 @@ export default function Home() {
       <section
         style={{
           ...wrap,
-          paddingTop: 54,
-          paddingBottom: 52,
+          paddingTop: 52,
+          paddingBottom: 46,
           textAlign: "center",
         }}
       >
@@ -117,36 +148,42 @@ export default function Home() {
             display: "inline-flex",
             alignItems: "center",
             justifyContent: "center",
-            gap: 8,
-            padding: "8px 14px",
+            gap: 10,
+            padding: "10px 16px",
             borderRadius: 999,
-            background: c.secondary,
+            background: "rgba(255,255,255,0.03)",
             border: `1px solid ${c.border}`,
             color: c.muted,
-            fontSize: 14,
+            fontSize: 13,
+            fontWeight: 700,
+            textTransform: "uppercase",
+            letterSpacing: "0.08em",
             marginBottom: 24,
           }}
         >
-          Missed calls, recovered automatically
+          Built for roofers, HVAC, plumbing, electrical, and home service teams
         </div>
 
         <h1
+          className={headingFont.className}
           style={{
-            fontSize: "clamp(42px, 8vw, 82px)",
-            lineHeight: 0.96,
-            letterSpacing: "-0.055em",
-            margin: "0 auto 22px",
-            maxWidth: 980,
+            fontSize: "clamp(56px, 10vw, 112px)",
+            lineHeight: 0.9,
+            letterSpacing: "-0.02em",
+            textTransform: "uppercase",
+            margin: "0 auto 20px",
+            maxWidth: 1080,
+            textShadow: "0 8px 30px rgba(0,0,0,0.24)",
           }}
         >
           We Recover Your Missed Calls
           <br />
-          and Turn Them Into Booked Jobs
+          And Turn Them Into Booked Jobs
         </h1>
 
         <div
           style={{
-            maxWidth: 760,
+            maxWidth: 820,
             margin: "0 auto 30px",
             color: c.muted,
             fontSize: 22,
@@ -154,10 +191,10 @@ export default function Home() {
           }}
         >
           <div>They call once.</div>
-          <div>You’re on a job, under a house, on a roof, or driving.</div>
+          <div>You’re on a job, in traffic, under a house, or up on a roof.</div>
           <div>They hang up and call the next company.</div>
-          <div style={{ color: c.fg, fontWeight: 700, marginTop: 8 }}>
-            We fix that, automatically.
+          <div style={{ color: c.fg, fontWeight: 800, marginTop: 10 }}>
+            We stop that from happening.
           </div>
         </div>
 
@@ -165,8 +202,8 @@ export default function Home() {
           style={{
             display: "flex",
             justifyContent: "center",
-            flexWrap: "wrap",
             gap: 14,
+            flexWrap: "wrap",
             marginBottom: 18,
           }}
         >
@@ -175,25 +212,25 @@ export default function Home() {
             style={{
               background: c.primary,
               color: c.primaryFg,
-              padding: "15px 22px",
-              borderRadius: 16,
               textDecoration: "none",
-              fontWeight: 800,
-              boxShadow: "0 14px 34px rgba(245,165,3,0.22)",
+              padding: "16px 24px",
+              borderRadius: 18,
+              fontWeight: 900,
+              boxShadow: `0 18px 40px ${c.glow}`,
             }}
           >
-            Try Demo: (914) 266-8127
+            Call the Live Demo: (914) 266-8127
           </a>
 
           <a
             href="#pricing"
             style={{
-              background: c.secondary,
+              background: "rgba(255,255,255,0.03)",
               color: c.fg,
-              padding: "15px 22px",
-              borderRadius: 16,
               textDecoration: "none",
-              fontWeight: 700,
+              padding: "16px 24px",
+              borderRadius: 18,
+              fontWeight: 800,
               border: `1px solid ${c.border}`,
             }}
           >
@@ -203,18 +240,18 @@ export default function Home() {
 
         <div
           style={{
+            maxWidth: 760,
+            margin: "0 auto",
             color: c.muted,
             fontSize: 15,
             lineHeight: 1.7,
-            maxWidth: 700,
-            margin: "0 auto",
           }}
         >
           They do not leave voicemails. They call the next company.
         </div>
       </section>
 
-      <section style={{ ...wrap, paddingTop: 12, paddingBottom: 28 }}>
+      <section style={{ ...wrap, paddingTop: 10, paddingBottom: 28 }}>
         <div
           style={{
             display: "grid",
@@ -222,82 +259,49 @@ export default function Home() {
             gap: 18,
           }}
         >
-          <div style={card}>
-            <div
-              style={{
-                fontWeight: 800,
-                fontSize: 18,
-                marginBottom: 10,
-                textAlign: "center",
-              }}
-            >
-              You are already paying for the phone to ring
+          {[
+            {
+              title: "YOU ARE ALREADY PAYING FOR THE PHONE TO RING",
+              text: "If you spend money on ads, referrals, trucks, dispatch, techs, or office staff, losing inbound calls is pure waste.",
+            },
+            {
+              title: "MISSED CALLS BECOME MISSED REVENUE",
+              text: "One missed emergency call or quote request can be worth far more than the monthly fee.",
+            },
+            {
+              title: "THE FASTEST RESPONSE USUALLY WINS",
+              text: "The company that responds first usually gets the callback. ServiceLock helps make sure that company is you.",
+            },
+          ].map((item) => (
+            <div key={item.title} style={card}>
+              <div
+                className={headingFont.className}
+                style={{
+                  fontSize: 30,
+                  lineHeight: 0.95,
+                  letterSpacing: "0.02em",
+                  textTransform: "uppercase",
+                  marginBottom: 14,
+                  textAlign: "center",
+                }}
+              >
+                {item.title}
+              </div>
+              <div style={{ color: c.muted, lineHeight: 1.75, textAlign: "center", fontSize: 16 }}>
+                {item.text}
+              </div>
             </div>
-            <div
-              style={{
-                color: c.muted,
-                lineHeight: 1.7,
-                textAlign: "center",
-              }}
-            >
-              If you spend money on ads, referrals, trucks, techs, or office staff,
-              losing inbound calls is pure waste.
-            </div>
-          </div>
-
-          <div style={card}>
-            <div
-              style={{
-                fontWeight: 800,
-                fontSize: 18,
-                marginBottom: 10,
-                textAlign: "center",
-              }}
-            >
-              Missed calls become missed revenue
-            </div>
-            <div
-              style={{
-                color: c.muted,
-                lineHeight: 1.7,
-                textAlign: "center",
-              }}
-            >
-              One missed emergency call or quote request can be worth far more than
-              the monthly fee.
-            </div>
-          </div>
-
-          <div style={card}>
-            <div
-              style={{
-                fontWeight: 800,
-                fontSize: 18,
-                marginBottom: 10,
-                textAlign: "center",
-              }}
-            >
-              Speed wins the job
-            </div>
-            <div
-              style={{
-                color: c.muted,
-                lineHeight: 1.7,
-                textAlign: "center",
-              }}
-            >
-              The company that responds first usually gets the callback. ServiceLock
-              helps make sure that company is you.
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
-      <section style={{ ...wrap, paddingTop: 34, paddingBottom: 20 }}>
-        <h2 style={sectionTitle}>How ServiceLock Works</h2>
-        <p style={{ ...sectionText, marginBottom: 26 }}>
-          You simply forward your business phone number to us, or we set it up in
-          minutes. When you miss a call, ServiceLock steps in immediately.
+      <section style={{ ...wrap, paddingTop: 34, paddingBottom: 22 }}>
+        <h2 className={headingFont.className} style={sectionTitle}>
+          How ServiceLock Works
+        </h2>
+        <p style={{ ...sectionText, marginBottom: 28 }}>
+          You simply forward your business number to us, or we set it up in minutes.
+          When you miss a call, ServiceLock steps in immediately.
         </p>
 
         <div
@@ -307,168 +311,107 @@ export default function Home() {
             gap: 18,
           }}
         >
-          <div style={card}>
-            <div
-              style={{
-                width: 42,
-                height: 42,
-                borderRadius: 999,
-                background: "rgba(245,165,3,0.14)",
-                border: "1px solid rgba(245,165,3,0.25)",
-                color: c.primary,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontWeight: 800,
-                margin: "0 auto 14px",
-              }}
-            >
-              1
+          {[
+            {
+              n: "1",
+              title: "Professional Text Reply",
+              text: "We respond instantly so the customer hears from you while they are still looking for help.",
+            },
+            {
+              n: "2",
+              title: "Lead Qualification",
+              text: "We ask smart questions, capture job details, and identify urgency so you know who is ready to buy.",
+            },
+            {
+              n: "3",
+              title: "Ready-To-Close Lead Summary",
+              text: "You get the key details by text or email. You just follow up and book the job.",
+            },
+          ].map((item) => (
+            <div key={item.n} style={card}>
+              <div
+                style={{
+                  width: 48,
+                  height: 48,
+                  margin: "0 auto 14px",
+                  borderRadius: 999,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontWeight: 900,
+                  background: "rgba(245,165,3,0.14)",
+                  color: c.primary,
+                  border: "1px solid rgba(245,165,3,0.25)",
+                }}
+              >
+                {item.n}
+              </div>
+              <div
+                className={headingFont.className}
+                style={{
+                  fontSize: 32,
+                  lineHeight: 0.95,
+                  letterSpacing: "0.015em",
+                  textTransform: "uppercase",
+                  marginBottom: 12,
+                  textAlign: "center",
+                }}
+              >
+                {item.title}
+              </div>
+              <div style={{ color: c.muted, lineHeight: 1.75, textAlign: "center", fontSize: 16 }}>
+                {item.text}
+              </div>
             </div>
-            <div
-              style={{
-                fontWeight: 800,
-                fontSize: 18,
-                marginBottom: 10,
-                textAlign: "center",
-              }}
-            >
-              Professional Text Reply
-            </div>
-            <div
-              style={{
-                color: c.muted,
-                lineHeight: 1.7,
-                textAlign: "center",
-              }}
-            >
-              We respond instantly so the customer hears from you while they are
-              still looking for help.
-            </div>
-          </div>
-
-          <div style={card}>
-            <div
-              style={{
-                width: 42,
-                height: 42,
-                borderRadius: 999,
-                background: "rgba(245,165,3,0.14)",
-                border: "1px solid rgba(245,165,3,0.25)",
-                color: c.primary,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontWeight: 800,
-                margin: "0 auto 14px",
-              }}
-            >
-              2
-            </div>
-            <div
-              style={{
-                fontWeight: 800,
-                fontSize: 18,
-                marginBottom: 10,
-                textAlign: "center",
-              }}
-            >
-              Lead Qualification
-            </div>
-            <div
-              style={{
-                color: c.muted,
-                lineHeight: 1.7,
-                textAlign: "center",
-              }}
-            >
-              We ask smart questions, capture job details, and identify urgency so
-              you know who is ready to buy.
-            </div>
-          </div>
-
-          <div style={card}>
-            <div
-              style={{
-                width: 42,
-                height: 42,
-                borderRadius: 999,
-                background: "rgba(245,165,3,0.14)",
-                border: "1px solid rgba(245,165,3,0.25)",
-                color: c.primary,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontWeight: 800,
-                margin: "0 auto 14px",
-              }}
-            >
-              3
-            </div>
-            <div
-              style={{
-                fontWeight: 800,
-                fontSize: 18,
-                marginBottom: 10,
-                textAlign: "center",
-              }}
-            >
-              Clean Lead Summary
-            </div>
-            <div
-              style={{
-                color: c.muted,
-                lineHeight: 1.7,
-                textAlign: "center",
-              }}
-            >
-              You get a ready to close lead summary by text or email. You just
-              follow up and book the job.
-            </div>
-          </div>
+          ))}
         </div>
 
         <div
           style={{
-            marginTop: 22,
+            marginTop: 20,
             textAlign: "center",
-            fontWeight: 700,
-            color: c.fg,
-            fontSize: 18,
+            fontSize: 20,
+            fontWeight: 800,
           }}
         >
-          We handle everything else.
+          We handle the busywork. You close the job.
         </div>
       </section>
 
-      <section style={{ ...wrap, paddingTop: 34, paddingBottom: 20 }}>
+      <section style={{ ...wrap, paddingTop: 36, paddingBottom: 22 }}>
         <div
           style={{
             ...card,
-            background: `linear-gradient(180deg, ${c.card}, ${c.secondary})`,
-            padding: 30,
+            background: `
+              linear-gradient(180deg, rgba(245,165,3,0.08), rgba(245,165,3,0.02)),
+              linear-gradient(180deg, ${c.card}, ${c.secondary})
+            `,
+            border: "1px solid rgba(245,165,3,0.22)",
           }}
         >
           <div
+            className={headingFont.className}
             style={{
-              color: c.primary,
-              fontWeight: 800,
-              letterSpacing: "0.02em",
-              marginBottom: 10,
+              fontSize: 34,
+              lineHeight: 0.95,
               textAlign: "center",
+              textTransform: "uppercase",
+              color: c.primary,
+              letterSpacing: "0.02em",
+              marginBottom: 12,
             }}
           >
-            REAL RESULTS
+            Real Results
           </div>
 
           <div
             style={{
-              maxWidth: 800,
-              margin: "0 auto 18px",
+              maxWidth: 840,
+              margin: "0 auto 14px",
               textAlign: "center",
-              fontSize: 32,
+              fontSize: 34,
               lineHeight: 1.2,
-              fontWeight: 800,
+              fontWeight: 900,
               letterSpacing: "-0.03em",
             }}
           >
@@ -477,49 +420,50 @@ export default function Home() {
 
           <div
             style={{
-              maxWidth: 820,
+              maxWidth: 840,
               margin: "0 auto",
               color: c.muted,
               fontSize: 18,
-              lineHeight: 1.75,
+              lineHeight: 1.8,
               textAlign: "center",
             }}
           >
-            Three or more recovered jobs is pure profit. Most users see payback in
-            the first 10 to 14 days.
+            Three or more recovered jobs is pure profit. Most service businesses should see the value fast.
           </div>
         </div>
       </section>
 
-      <section style={{ ...wrap, paddingTop: 34, paddingBottom: 20 }}>
+      <section style={{ ...wrap, paddingTop: 36, paddingBottom: 22 }}>
         <div
           style={{
             ...card,
             background: "rgba(245,165,3,0.08)",
             border: "1px solid rgba(245,165,3,0.24)",
-            padding: 30,
           }}
         >
           <div
+            className={headingFont.className}
             style={{
-              color: c.primary,
-              fontWeight: 800,
-              letterSpacing: "0.02em",
-              marginBottom: 10,
+              fontSize: 34,
+              lineHeight: 0.95,
               textAlign: "center",
+              textTransform: "uppercase",
+              color: c.primary,
+              letterSpacing: "0.02em",
+              marginBottom: 12,
             }}
           >
-            WHY THIS MATTERS
+            Why This Matters
           </div>
 
           <div
             style={{
-              maxWidth: 860,
+              maxWidth: 900,
               margin: "0 auto 12px",
               textAlign: "center",
-              fontSize: 32,
-              lineHeight: 1.2,
-              fontWeight: 800,
+              fontSize: 36,
+              lineHeight: 1.18,
+              fontWeight: 900,
               letterSpacing: "-0.03em",
             }}
           >
@@ -531,14 +475,13 @@ export default function Home() {
               maxWidth: 860,
               margin: "0 auto",
               color: c.fg,
-              opacity: 0.88,
+              opacity: 0.9,
               fontSize: 18,
-              lineHeight: 1.75,
+              lineHeight: 1.8,
               textAlign: "center",
             }}
           >
-            Miss just a few calls each week and you are quietly losing thousands
-            every month.
+            Miss just a few calls each week and you are quietly losing thousands every month.
           </div>
         </div>
       </section>
@@ -547,72 +490,66 @@ export default function Home() {
         <div
           style={{
             ...card,
-            background: `linear-gradient(180deg, ${c.card}, ${c.secondary})`,
-            padding: 34,
+            padding: 36,
           }}
         >
           <div
+            className={headingFont.className}
             style={{
+              ...sectionTitle,
               color: c.primary,
-              fontWeight: 800,
-              letterSpacing: "0.02em",
-              marginBottom: 12,
-              textAlign: "center",
+              fontSize: "clamp(30px, 4vw, 46px)",
+              marginBottom: 10,
             }}
           >
-            SIMPLE PRICING
+            Simple Pricing
           </div>
 
-          <h2
+          <div
+            className={headingFont.className}
             style={{
-              fontSize: "clamp(34px, 5vw, 56px)",
-              lineHeight: 1.02,
-              letterSpacing: "-0.04em",
-              margin: "0 0 14px",
+              fontSize: "clamp(52px, 8vw, 92px)",
+              lineHeight: 0.92,
               textAlign: "center",
+              textTransform: "uppercase",
+              letterSpacing: "-0.03em",
+              marginBottom: 10,
             }}
           >
-            Only $349 per month
-          </h2>
+            Only $349 Per Month
+          </div>
 
           <p
             style={{
               color: c.muted,
               fontSize: 18,
-              lineHeight: 1.7,
+              lineHeight: 1.75,
               textAlign: "center",
               maxWidth: 760,
-              margin: "0 auto 26px",
+              margin: "0 auto 24px",
             }}
           >
-            Flat rate. Unlimited leads and texts. No setup fee. No contract, cancel
-            anytime.
+            Flat rate. Unlimited leads and texts. No setup fee. No contract. Cancel anytime.
           </p>
 
           <div
             style={{
               display: "flex",
               justifyContent: "center",
-              flexWrap: "wrap",
               gap: 12,
+              flexWrap: "wrap",
               marginBottom: 24,
             }}
           >
-            {[
-              "Unlimited leads & texts",
-              "No setup fee",
-              "No contract",
-              "Cancel anytime",
-            ].map((item) => (
+            {["Unlimited leads & texts", "No setup fee", "No contract", "Cancel anytime"].map((item) => (
               <div
                 key={item}
                 style={{
+                  padding: "11px 15px",
+                  borderRadius: 999,
                   background: "rgba(255,255,255,0.03)",
                   border: `1px solid ${c.border}`,
-                  borderRadius: 999,
-                  padding: "10px 14px",
-                  color: c.fg,
-                  fontWeight: 600,
+                  fontWeight: 700,
                   fontSize: 14,
                 }}
               >
@@ -623,34 +560,24 @@ export default function Home() {
 
           <div
             style={{
-              maxWidth: 760,
+              maxWidth: 780,
               margin: "0 auto 28px",
               textAlign: "center",
             }}
           >
             <div
+              className={headingFont.className}
               style={{
-                color: c.primary,
-                fontWeight: 800,
-                letterSpacing: "0.02em",
-                marginBottom: 10,
-              }}
-            >
-              FINAL CTA
-            </div>
-            <div
-              style={{
-                fontSize: 28,
-                lineHeight: 1.25,
-                fontWeight: 800,
-                marginBottom: 10,
-                letterSpacing: "-0.03em",
+                fontSize: 36,
+                lineHeight: 0.95,
+                textTransform: "uppercase",
+                marginBottom: 12,
               }}
             >
               Ready to stop losing jobs to missed calls?
             </div>
-            <div style={{ color: c.muted, fontSize: 18, lineHeight: 1.7 }}>
-              Call the live demo or book your 15 minute setup call.
+            <div style={{ color: c.muted, fontSize: 18, lineHeight: 1.75 }}>
+              Call the live demo or book your 15-minute setup call.
             </div>
           </div>
 
@@ -658,8 +585,8 @@ export default function Home() {
             style={{
               display: "flex",
               justifyContent: "center",
-              flexWrap: "wrap",
               gap: 14,
+              flexWrap: "wrap",
             }}
           >
             <a
@@ -668,10 +595,10 @@ export default function Home() {
                 background: c.primary,
                 color: c.primaryFg,
                 textDecoration: "none",
-                padding: "15px 22px",
-                borderRadius: 16,
-                fontWeight: 800,
-                boxShadow: "0 14px 34px rgba(245,165,3,0.22)",
+                padding: "16px 24px",
+                borderRadius: 18,
+                fontWeight: 900,
+                boxShadow: `0 18px 40px ${c.glow}`,
               }}
             >
               Call the Live Demo: (914) 266-8127
@@ -680,12 +607,12 @@ export default function Home() {
             <a
               href="mailto:hello@servicelock.com?subject=ServiceLock%20Setup%20Call"
               style={{
-                background: c.secondary,
+                background: "rgba(255,255,255,0.03)",
                 color: c.fg,
                 textDecoration: "none",
-                padding: "15px 22px",
-                borderRadius: 16,
-                fontWeight: 700,
+                padding: "16px 24px",
+                borderRadius: 18,
+                fontWeight: 800,
                 border: `1px solid ${c.border}`,
               }}
             >
