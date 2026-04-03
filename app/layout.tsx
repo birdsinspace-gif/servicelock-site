@@ -1,3 +1,5 @@
+import "./globals.css";
+
 export const metadata = {
   title: "ServiceLock",
   description: "Turn missed calls into recovered jobs",
@@ -16,7 +18,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body style={{ margin: 0 }}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
