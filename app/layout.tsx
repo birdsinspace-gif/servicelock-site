@@ -11,7 +11,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* BLOCKY / TOUGH FONTS */}
         <link
           href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Russo+One&family=Teko:wght@500;600;700&family=Bebas+Neue&display=swap"
           rel="stylesheet"
