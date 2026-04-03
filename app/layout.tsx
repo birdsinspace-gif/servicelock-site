@@ -1,18 +1,23 @@
 export const metadata = {
   title: "ServiceLock",
-  description: "Turn missed calls into booked jobs",
+  description: "Turn missed calls into recovered jobs",
 };
 
 export default function RootLayout({
   children,
 }: {
-  children: import("react").ReactNode;
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-      <body style={{ margin: 0, fontFamily: "Arial, sans-serif" }}>
-        {children}
-      </body>
+      <head>
+        {/* BLOCKY / TOUGH FONTS */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Russo+One&family=Teko:wght@500;600;700&family=Bebas+Neue&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }
