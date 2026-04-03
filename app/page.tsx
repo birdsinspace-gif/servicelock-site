@@ -24,6 +24,26 @@ export default function ServiceLockLandingPage() {
     padding: 24,
   };
 
+  const buttonPrimary: React.CSSProperties = {
+    background: colors.primary,
+    color: colors.primaryFg,
+    padding: "14px 24px",
+    borderRadius: 12,
+    fontWeight: 600,
+    textDecoration: "none",
+    display: "inline-block",
+  };
+
+  const buttonSecondary: React.CSSProperties = {
+    border: `1px solid ${colors.border}`,
+    color: colors.fg,
+    padding: "14px 24px",
+    borderRadius: 12,
+    fontWeight: 500,
+    textDecoration: "none",
+    display: "inline-block",
+  };
+
   return (
     <div
       style={{
@@ -40,8 +60,14 @@ export default function ServiceLockLandingPage() {
           padding: "24px 24px 40px",
         }}
       >
-        {/* HERO */}
-        <section style={{ paddingTop: 24, paddingBottom: 56, textAlign: "center" }}>
+        {/* 1. HERO */}
+        <section
+          style={{
+            paddingTop: 24,
+            paddingBottom: 56,
+            textAlign: "center",
+          }}
+        >
           <div
             style={{
               marginBottom: 24,
@@ -116,7 +142,7 @@ export default function ServiceLockLandingPage() {
           >
             <span>They call once</span>
             <span>•</span>
-            <span>You're busy</span>
+            <span>You&apos;re busy</span>
             <span>•</span>
             <span>They call the next company</span>
           </div>
@@ -130,35 +156,89 @@ export default function ServiceLockLandingPage() {
               flexWrap: "wrap",
             }}
           >
-            <a
-              href="tel:+19142668127"
-              style={{
-                background: colors.primary,
-                color: colors.primaryFg,
-                padding: "14px 24px",
-                borderRadius: 12,
-                fontWeight: 600,
-                textDecoration: "none",
-              }}
-            >
+            <a href="tel:+19142668127" style={buttonPrimary}>
               Call the Live Demo: (914) 266-8127
             </a>
-            <a
-              href="#pricing"
-              style={{
-                border: `1px solid ${colors.border}`,
-                color: colors.fg,
-                padding: "14px 24px",
-                borderRadius: 12,
-                textDecoration: "none",
-              }}
-            >
+            <a href="#pricing" style={buttonSecondary}>
               Pricing
             </a>
           </div>
         </section>
 
-        {/* HARD TRUTH */}
+        {/* 2. ROI */}
+        <section style={sectionStyle}>
+          <h2
+            style={{
+              fontSize: 36,
+              fontWeight: 600,
+              letterSpacing: "-0.03em",
+              margin: 0,
+            }}
+          >
+            You&apos;re Losing Real Money Every Time You Miss a Call
+          </h2>
+          <p
+            style={{
+              marginTop: 16,
+              color: colors.muted,
+              maxWidth: 720,
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          >
+            Miss just a few calls per week and you&apos;re losing thousands every
+            month.
+          </p>
+
+          <div
+            style={{
+              marginTop: 40,
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+              gap: 24,
+              maxWidth: 900,
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          >
+            {[
+              ["$500", "Small repair or service call"],
+              ["$1,500", "Mid-sized job or urgent issue"],
+              ["$5,000+", "High-value project or replacement"],
+            ].map(([value, label]) => (
+              <div key={value} style={cardStyle}>
+                <p
+                  style={{
+                    fontSize: 12,
+                    color: colors.muted,
+                    margin: 0,
+                  }}
+                >
+                  Missed value
+                </p>
+                <p
+                  style={{
+                    fontSize: 32,
+                    color: colors.primary,
+                    fontWeight: 600,
+                    margin: "10px 0 0",
+                  }}
+                >
+                  {value}
+                </p>
+                <p style={{ fontSize: 14, marginTop: 10, marginBottom: 0 }}>
+                  {label}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <p style={{ marginTop: 32, fontSize: 18 }}>
+            Right now, when you miss the call, your competitor gets the job.
+          </p>
+        </section>
+
+        {/* 3. HARD TRUTH */}
         <section style={{ paddingTop: 16, paddingBottom: 32 }}>
           <div
             style={{
@@ -169,107 +249,166 @@ export default function ServiceLockLandingPage() {
               margin: "0 auto",
             }}
           >
-            <p style={{ fontSize: 12, color: colors.muted }}>Hard truth</p>
-            <h2 style={{ fontSize: 36, fontWeight: 600 }}>
-              If you miss 10 calls this week, how many jobs did you just give away?
+            <p style={{ fontSize: 12, color: colors.muted, marginTop: 0 }}>
+              Hard truth
+            </p>
+            <h2
+              style={{
+                margin: "12px 0 0",
+                fontSize: 36,
+                fontWeight: 600,
+                letterSpacing: "-0.03em",
+              }}
+            >
+              If you miss 10 calls this week, how many jobs did you just give
+              away?
             </h2>
           </div>
         </section>
 
-        {/* WHY THIS WORKS */}
+        {/* 4. HOW IT WORKS */}
         <section style={sectionStyle}>
-          <h2 style={{ fontSize: 30, fontWeight: 600 }}>Why this works</h2>
+          <h2
+            style={{
+              fontSize: 30,
+              fontWeight: 600,
+              letterSpacing: "-0.03em",
+              margin: 0,
+            }}
+          >
+            ServiceLock Flips That
+          </h2>
 
           <div
             style={{
               marginTop: 32,
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-              gap: 20,
-              maxWidth: 900,
-              margin: "0 auto",
+              gap: 28,
+              maxWidth: 760,
+              marginLeft: "auto",
+              marginRight: "auto",
             }}
           >
             {[
-              "First company to respond wins",
-              "Callers don't leave voicemails",
-              "They call the next company fast",
-              "Speed wins",
-              "One job pays for the service",
-            ].map((item) => (
-              <div key={item} style={cardStyle}>
-                <p style={{ margin: 0 }}>{item}</p>
+              [
+                "01",
+                "We Respond Instantly",
+                "The moment you miss the call, we step in and text back while they're still looking.",
+              ],
+              [
+                "02",
+                "We Capture the Job",
+                "We qualify the lead, gather the important details, and keep them from moving on.",
+              ],
+              [
+                "03",
+                "We Send You the Lead",
+                "You get the lead, call back fast, and close with context instead of starting cold.",
+              ],
+            ].map(([n, title, text]) => (
+              <div key={n}>
+                <p
+                  style={{
+                    color: colors.primary,
+                    margin: 0,
+                    fontWeight: 600,
+                  }}
+                >
+                  {n}
+                </p>
+                <p
+                  style={{
+                    fontWeight: 600,
+                    margin: "8px 0 0",
+                    fontSize: 20,
+                  }}
+                >
+                  {title}
+                </p>
+                <p
+                  style={{
+                    color: colors.muted,
+                    marginTop: 10,
+                    marginBottom: 0,
+                    maxWidth: 620,
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                  }}
+                >
+                  {text}
+                </p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* ROI */}
-        <section style={sectionStyle}>
-          <h2 style={{ fontSize: 36, fontWeight: 600 }}>
-            You're Losing Real Money Every Time You Miss a Call
-          </h2>
-          <p style={{ marginTop: 16, color: colors.muted }}>
-            Miss just a few calls per week and you're losing thousands every month.
-          </p>
-
+        {/* 5. PRICING */}
+        <section id="pricing" style={sectionStyle}>
           <div
             style={{
-              marginTop: 40,
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-              gap: 24,
-              maxWidth: 900,
+              ...cardStyle,
+              borderRadius: 24,
+              maxWidth: 560,
               margin: "0 auto",
+              textAlign: "center",
             }}
           >
-            {[
-              ["$500", "Small repair or service call"],
-              ["$1,500", "Mid-sized job or urgent issue"],
-              ["$5,000+", "High-value project or replacement"],
-            ].map(([value, label]) => (
-              <div key={value} style={cardStyle}>
-                <p style={{ fontSize: 12, color: colors.muted }}>Missed value</p>
-                <p style={{ fontSize: 32, color: colors.primary }}>{value}</p>
-                <p>{label}</p>
-              </div>
-            ))}
-          </div>
-
-          <p style={{ marginTop: 32 }}>
-            Right now, when you miss the call, your competitor gets the job.
-          </p>
-        </section>
-
-        {/* PRICING */}
-        <section id="pricing" style={sectionStyle}>
-          <div style={{ ...cardStyle, borderRadius: 24, maxWidth: 560, margin: "0 auto" }}>
-            <h2 style={{ fontSize: 56, color: colors.primary }}>$497/month</h2>
-            <p>No setup fee</p>
-            <p>No contract</p>
-            <p>Cancel anytime</p>
-            <p style={{ color: colors.muted }}>
+            <h2
+              style={{
+                fontSize: 56,
+                color: colors.primary,
+                fontWeight: 600,
+                letterSpacing: "-0.03em",
+                margin: 0,
+              }}
+            >
+              $497/month
+            </h2>
+            <div style={{ marginTop: 24, fontSize: 14, lineHeight: 1.8 }}>
+              <p style={{ margin: 0 }}>No setup fee</p>
+              <p style={{ margin: 0 }}>No contract</p>
+              <p style={{ margin: 0 }}>Cancel anytime</p>
+            </div>
+            <p
+              style={{
+                marginTop: 24,
+                color: colors.muted,
+                fontSize: 14,
+                marginBottom: 0,
+              }}
+            >
               One job covers the cost. Everything else is profit.
             </p>
           </div>
         </section>
 
-        {/* CLOSE */}
+        {/* 6. CLOSE */}
         <section style={sectionStyle}>
-          <h2 style={{ fontSize: 36, fontWeight: 600 }}>Stop Losing Jobs</h2>
+          <h2
+            style={{
+              fontSize: 36,
+              fontWeight: 600,
+              letterSpacing: "-0.03em",
+              margin: 0,
+            }}
+          >
+            Stop Losing Jobs
+          </h2>
 
-          <div style={{ marginTop: 32 }}>
-            <a
-              href="tel:+19142668127"
-              style={{
-                background: colors.primary,
-                color: colors.primaryFg,
-                padding: "14px 24px",
-                borderRadius: 12,
-                textDecoration: "none",
-              }}
-            >
+          <div
+            style={{
+              marginTop: 32,
+              display: "flex",
+              justifyContent: "center",
+              gap: 16,
+              flexWrap: "wrap",
+            }}
+          >
+            <a href="tel:+19142668127" style={buttonPrimary}>
               Call the Live Demo: (914) 266-8127
+            </a>
+            <a href="#" style={buttonSecondary}>
+              Book Setup Call
             </a>
           </div>
         </section>
@@ -280,14 +419,41 @@ export default function ServiceLockLandingPage() {
             borderTop: `1px solid ${colors.border}`,
             marginTop: 80,
             paddingTop: 32,
+            paddingBottom: 24,
             textAlign: "center",
           }}
         >
-          <div style={{ fontWeight: 600 }}>ServiceLock</div>
-          <div style={{ fontSize: 12, color: colors.muted }}>
-            Missed call recovery for service businesses
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 12,
+            }}
+          >
+            <div
+              style={{
+                width: 40,
+                height: 40,
+                borderRadius: 12,
+                background: colors.card,
+                border: `1px solid ${colors.border}`,
+                color: colors.primary,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontWeight: 700,
+              }}
+            >
+              S
+            </div>
+            <div style={{ fontWeight: 600 }}>ServiceLock</div>
+            <div style={{ fontSize: 12, color: colors.muted }}>
+              Missed call recovery for service businesses
+            </div>
           </div>
-          <div style={{ marginTop: 12, fontSize: 12, color: colors.muted }}>
+
+          <div style={{ marginTop: 24, fontSize: 12, color: colors.muted }}>
             © 2026 ServiceLock. All rights reserved.
           </div>
         </footer>
