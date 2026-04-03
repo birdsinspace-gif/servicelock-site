@@ -10,7 +10,7 @@ export default function ServiceLockLandingPage() {
   };
 
   const fontStack =
-    "'Archivo Black', 'Russo One', 'Teko', 'Bebas Neue', system-ui, sans-serif";
+    "'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif";
 
   const cardStyle: React.CSSProperties = {
     background: colors.card,
@@ -35,13 +35,8 @@ export default function ServiceLockLandingPage() {
           padding: "24px 24px 40px",
         }}
       >
-        <section
-          style={{
-            paddingTop: 24,
-            paddingBottom: 64,
-            textAlign: "center",
-          }}
-        >
+        {/* HERO */}
+        <section style={{ paddingTop: 24, paddingBottom: 64, textAlign: "center" }}>
           <div
             style={{
               marginBottom: 24,
@@ -68,7 +63,7 @@ export default function ServiceLockLandingPage() {
               S
             </div>
             <div>
-              <div style={{ fontWeight: 700 }}>ServiceLock</div>
+              <div style={{ fontWeight: 600 }}>ServiceLock</div>
               <div style={{ fontSize: 12, color: colors.muted }}>
                 Missed call recovery for service businesses
               </div>
@@ -79,7 +74,7 @@ export default function ServiceLockLandingPage() {
             style={{
               fontSize: "clamp(42px, 7vw, 72px)",
               lineHeight: 1,
-              fontWeight: 700,
+              fontWeight: 600,
               letterSpacing: "-0.03em",
               maxWidth: 760,
               margin: "0 auto",
@@ -96,7 +91,7 @@ export default function ServiceLockLandingPage() {
               marginTop: 24,
               fontSize: "clamp(18px, 2vw, 24px)",
               color: colors.primary,
-              fontWeight: 700,
+              fontWeight: 600,
             }}
           >
             Miss a call → Lose a job
@@ -116,7 +111,7 @@ export default function ServiceLockLandingPage() {
           >
             <span>They call once</span>
             <span>•</span>
-            <span>You&apos;re busy</span>
+            <span>You're busy</span>
             <span>•</span>
             <span>They call the next company</span>
           </div>
@@ -137,9 +132,8 @@ export default function ServiceLockLandingPage() {
                 color: colors.primaryFg,
                 padding: "14px 24px",
                 borderRadius: 12,
-                fontWeight: 700,
+                fontWeight: 600,
                 textDecoration: "none",
-                display: "inline-block",
               }}
             >
               Call the Live Demo: (914) 266-8127
@@ -148,11 +142,10 @@ export default function ServiceLockLandingPage() {
               href="#pricing"
               style={{
                 border: `1px solid ${colors.border}`,
-                color: colors.fg,
                 padding: "14px 24px",
                 borderRadius: 12,
                 textDecoration: "none",
-                display: "inline-block",
+                color: colors.fg,
               }}
             >
               Pricing
@@ -160,31 +153,12 @@ export default function ServiceLockLandingPage() {
           </div>
         </section>
 
-        <section
-          style={{
-            padding: "80px 0",
-            textAlign: "center",
-          }}
-        >
-          <h2
-            style={{
-              fontSize: 36,
-              fontWeight: 700,
-              letterSpacing: "-0.03em",
-              margin: 0,
-            }}
-          >
+        {/* ROI */}
+        <section style={{ padding: "80px 0", textAlign: "center" }}>
+          <h2 style={{ fontSize: 36, fontWeight: 600 }}>
             You’re Losing Real Money Every Time You Miss a Call
           </h2>
-          <p
-            style={{
-              marginTop: 16,
-              color: colors.muted,
-              maxWidth: 720,
-              marginLeft: "auto",
-              marginRight: "auto",
-            }}
-          >
+          <p style={{ marginTop: 16, color: colors.muted }}>
             Miss just a few calls per week and you’re losing thousands every month.
           </p>
 
@@ -195,8 +169,7 @@ export default function ServiceLockLandingPage() {
               gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
               gap: 24,
               maxWidth: 900,
-              marginLeft: "auto",
-              marginRight: "auto",
+              margin: "0 auto",
             }}
           >
             {[
@@ -205,158 +178,45 @@ export default function ServiceLockLandingPage() {
               ["$5,000+", "High-value project or replacement"],
             ].map(([value, label]) => (
               <div key={value} style={cardStyle}>
-                <p style={{ fontSize: 12, color: colors.muted, margin: 0 }}>
-                  Missed value
-                </p>
-                <p
-                  style={{
-                    fontSize: 32,
-                    color: colors.primary,
-                    fontWeight: 700,
-                    margin: "8px 0 0",
-                  }}
-                >
+                <p style={{ fontSize: 12, color: colors.muted }}>Missed value</p>
+                <p style={{ fontSize: 32, color: colors.primary, fontWeight: 600 }}>
                   {value}
                 </p>
-                <p style={{ fontSize: 14, marginTop: 8 }}>{label}</p>
+                <p style={{ fontSize: 14 }}>{label}</p>
               </div>
             ))}
           </div>
 
-          <p style={{ marginTop: 32, fontSize: 18 }}>
+          <p style={{ marginTop: 32 }}>
             Right now, when you miss the call, your competitor gets the job.
           </p>
         </section>
 
+        {/* HARD TRUTH */}
         <section style={{ padding: "80px 0" }}>
           <div
             style={{
-              background: colors.card,
-              border: `1px solid ${colors.border}`,
+              ...cardStyle,
               borderRadius: 24,
-              padding: 40,
               textAlign: "center",
               maxWidth: 760,
               margin: "0 auto",
             }}
           >
-            <p style={{ fontSize: 12, color: colors.muted, margin: 0 }}>
-              Hard truth
-            </p>
-            <h2
-              style={{
-                marginTop: 16,
-                fontSize: 36,
-                fontWeight: 700,
-              }}
-            >
+            <p style={{ fontSize: 12, color: colors.muted }}>Hard truth</p>
+            <h2 style={{ fontSize: 32, fontWeight: 600 }}>
               If you miss 10 calls this week, how many jobs did you just give away?
             </h2>
           </div>
         </section>
 
+        {/* CLOSE */}
         <section style={{ padding: "80px 0", textAlign: "center" }}>
-          <h2
-            style={{
-              fontSize: 30,
-              fontWeight: 700,
-              letterSpacing: "-0.03em",
-              margin: 0,
-            }}
-          >
-            ServiceLock Flips That
-          </h2>
-
-          <div
-            style={{
-              marginTop: 32,
-              display: "grid",
-              gap: 24,
-              maxWidth: 760,
-              marginLeft: "auto",
-              marginRight: "auto",
-            }}
-          >
-            {[
-              [
-                "01",
-                "We Respond Instantly",
-                "The moment you miss the call, we step in and text back while they’re still looking.",
-              ],
-              [
-                "02",
-                "We Capture the Job",
-                "We qualify the lead, gather the important details, and keep them from moving on.",
-              ],
-              [
-                "03",
-                "We Send You the Lead",
-                "You get the lead, call back fast, and close with context instead of starting cold.",
-              ],
-            ].map(([n, title, text]) => (
-              <div key={n}>
-                <p style={{ color: colors.primary, margin: 0 }}>{n}</p>
-                <p style={{ fontWeight: 700, margin: "8px 0 0" }}>{title}</p>
-                <p style={{ color: colors.muted, marginTop: 8 }}>{text}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section id="pricing" style={{ padding: "80px 0", textAlign: "center" }}>
-          <div
-            style={{
-              background: colors.card,
-              border: `1px solid ${colors.border}`,
-              borderRadius: 24,
-              padding: 40,
-              maxWidth: 560,
-              margin: "0 auto",
-            }}
-          >
-            <h2
-              style={{
-                fontSize: 56,
-                color: colors.primary,
-                fontWeight: 700,
-                letterSpacing: "-0.03em",
-                margin: 0,
-              }}
-            >
-              $497/month
-            </h2>
-            <div style={{ marginTop: 24, fontSize: 14, lineHeight: 1.8 }}>
-              <p style={{ margin: 0 }}>No setup fee</p>
-              <p style={{ margin: 0 }}>No contract</p>
-              <p style={{ margin: 0 }}>Cancel anytime</p>
-            </div>
-            <p style={{ marginTop: 24, color: colors.muted, fontSize: 14 }}>
-              One job covers the cost. Everything else is profit.
-            </p>
-          </div>
-        </section>
-
-        <section style={{ padding: "80px 0", textAlign: "center" }}>
-          <h2
-            style={{
-              fontSize: 36,
-              fontWeight: 700,
-              letterSpacing: "-0.03em",
-              margin: 0,
-            }}
-          >
+          <h2 style={{ fontSize: 32, fontWeight: 600 }}>
             Stop Losing Jobs
           </h2>
 
-          <div
-            style={{
-              marginTop: 32,
-              display: "flex",
-              justifyContent: "center",
-              gap: 16,
-              flexWrap: "wrap",
-            }}
-          >
+          <div style={{ marginTop: 32, display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
             <a
               href="tel:+19142668127"
               style={{
@@ -364,72 +224,14 @@ export default function ServiceLockLandingPage() {
                 color: colors.primaryFg,
                 padding: "14px 24px",
                 borderRadius: 12,
-                fontWeight: 700,
+                fontWeight: 600,
                 textDecoration: "none",
-                display: "inline-block",
               }}
             >
               Call the Live Demo: (914) 266-8127
             </a>
-            <a
-              href="#"
-              style={{
-                border: `1px solid ${colors.border}`,
-                color: colors.fg,
-                padding: "14px 24px",
-                borderRadius: 12,
-                textDecoration: "none",
-                display: "inline-block",
-              }}
-            >
-              Book Setup Call
-            </a>
           </div>
         </section>
-
-        <footer
-          style={{
-            borderTop: `1px solid ${colors.border}`,
-            marginTop: 80,
-            paddingTop: 32,
-            paddingBottom: 24,
-            textAlign: "center",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: 12,
-            }}
-          >
-            <div
-              style={{
-                width: 40,
-                height: 40,
-                borderRadius: 12,
-                background: colors.card,
-                border: `1px solid ${colors.border}`,
-                color: colors.primary,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontWeight: 700,
-              }}
-            >
-              S
-            </div>
-            <div style={{ fontWeight: 700 }}>ServiceLock</div>
-            <div style={{ fontSize: 12, color: colors.muted }}>
-              Missed call recovery for service businesses
-            </div>
-          </div>
-
-          <div style={{ marginTop: 24, fontSize: 12, color: colors.muted }}>
-            © {new Date().getFullYear()} ServiceLock. All rights reserved.
-          </div>
-        </footer>
       </main>
     </div>
   );
