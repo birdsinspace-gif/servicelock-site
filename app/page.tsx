@@ -1,531 +1,267 @@
-import { Inter, Oswald } from "next/font/google";
+// app/page.tsx
 
-const heading = Oswald({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-});
+import { PhoneCall, DollarSign, Zap, ClipboardList, Send, CheckCircle2 } from "lucide-react";
 
-const body = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-});
-
-export default function Home() {
-  const c = {
-    bg: "#0f1318",
-    fg: "#f5f3ef",
-    primary: "#f5a503",
-    primaryFg: "#0f1318",
-    muted: "#828a94",
-    border: "#272e38",
-    card: "#151a21",
-    secondary: "#212730",
-    glow: "rgba(245,165,3,0.14)",
-  };
-
-  const wrap: React.CSSProperties = {
-    width: "100%",
-    maxWidth: 1040,
-    margin: "0 auto",
-    paddingLeft: 24,
-    paddingRight: 24,
-    boxSizing: "border-box",
-  };
-
-  const card: React.CSSProperties = {
-    background: `linear-gradient(180deg, ${c.card}, ${c.secondary})`,
-    border: `1px solid ${c.border}`,
-    borderRadius: 22,
-    padding: 28,
-    boxShadow: "0 14px 40px rgba(0,0,0,0.18)",
-  };
-
+export default function HomePage() {
   return (
-    <main
-      className={body.className}
-      style={{
-        minHeight: "100vh",
-        background: `
-          radial-gradient(circle at top, rgba(245,165,3,0.05), transparent 24%),
-          linear-gradient(180deg, ${c.bg} 0%, ${c.bg} 100%)
-        `,
-        color: c.fg,
-      }}
-    >
-      <header
-        style={{
-          ...wrap,
-          paddingTop: 24,
-          paddingBottom: 20,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: 16,
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <div
-            style={{
-              width: 40,
-              height: 40,
-              borderRadius: 12,
-              background: c.primary,
-              color: c.primaryFg,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontWeight: 800,
-              fontSize: 18,
-              boxShadow: `0 10px 26px ${c.glow}`,
-              flexShrink: 0,
-            }}
-          >
-            S
-          </div>
-
-          <div>
-            <div
-              className={heading.className}
-              style={{
-                fontSize: 24,
-                lineHeight: 1,
-                letterSpacing: "0.01em",
-              }}
-            >
-              ServiceLock
+    <main className="min-h-screen bg-[#0B1020] text-white">
+      <section className="border-b border-white/10">
+        <div className="mx-auto max-w-6xl px-6 py-24 sm:px-8 sm:py-28 lg:px-12 lg:py-32">
+          <div className="mb-8 flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#F59E0B] text-[#0B1020] shadow-lg shadow-[#F59E0B]/20">
+              <span className="text-lg font-bold">S</span>
             </div>
-            <div
-              style={{
-                color: c.muted,
-                fontSize: 12,
-                marginTop: 4,
-              }}
-            >
-              Recovered revenue from missed calls
+            <div>
+              <p className="text-lg font-semibold tracking-tight">ServiceLock</p>
+              <p className="text-sm text-white/60">Missed call recovery for service businesses</p>
             </div>
           </div>
-        </div>
 
-        <a
-          href="#pricing"
-          style={{
-            textDecoration: "none",
-            color: c.fg,
-            background: "rgba(255,255,255,0.03)",
-            border: `1px solid ${c.border}`,
-            padding: "12px 16px",
-            borderRadius: 14,
-            fontWeight: 700,
-            whiteSpace: "nowrap",
-          }}
-        >
-          Pricing
-        </a>
-      </header>
+          <div className="grid items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
+            <div>
+              <div className="mb-6 inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/75">
+                Built for busy service teams
+              </div>
 
-      <section
-        style={{
-          ...wrap,
-          textAlign: "center",
-          paddingTop: 72,
-          paddingBottom: 72,
-        }}
-      >
-        <div
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "9px 14px",
-            borderRadius: 999,
-            background: "rgba(255,255,255,0.03)",
-            border: `1px solid ${c.border}`,
-            color: c.muted,
-            fontSize: 13,
-            fontWeight: 700,
-            marginBottom: 24,
-          }}
-        >
-          Built for busy service teams
-        </div>
+              <h1 className="max-w-4xl text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
+                Turn Missed Calls Into
+                <span className="block text-[#F59E0B]">Booked Jobs</span>
+              </h1>
 
-        <h1
-          className={heading.className}
-          style={{
-            fontSize: "clamp(46px, 7vw, 74px)",
-            lineHeight: 0.95,
-            letterSpacing: "-0.02em",
-            margin: "0 auto 18px",
-            maxWidth: 880,
-          }}
-        >
-          Turn Missed Calls Into
-          <br />
-          Thousands in Recovered Jobs
-        </h1>
+              <div className="mt-8 space-y-3 text-xl text-white/80 sm:text-2xl">
+                <p>They call once.</p>
+                <p>You’re busy.</p>
+                <p>They call the next company.</p>
+                <p className="font-semibold text-white">That job is gone.</p>
+              </div>
 
-        <div
-          style={{
-            maxWidth: 720,
-            margin: "0 auto 18px",
-            color: c.muted,
-            fontSize: 22,
-            lineHeight: 1.7,
-          }}
-        >
-          <div>They call once.</div>
-          <div>You’re busy.</div>
-          <div>They call the next company.</div>
-        </div>
+              <p className="mt-8 max-w-2xl text-lg leading-8 text-white/70 sm:text-xl">
+                ServiceLock texts them instantly, qualifies the lead, and sends you a ready-to-book job before your competitor gets it.
+              </p>
 
-        <div
-          style={{
-            fontSize: 28,
-            fontWeight: 800,
-            lineHeight: 1.25,
-            marginBottom: 28,
-          }}
-        >
-          That job is gone.
-        </div>
+              <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+                <a
+                  href="tel:9142668127"
+                  className="inline-flex items-center justify-center rounded-2xl bg-[#F59E0B] px-6 py-4 text-base font-semibold text-[#0B1020] transition hover:scale-[1.01] hover:bg-[#fbbf24]"
+                >
+                  Call the Live Demo: (914) 266-8127
+                </a>
+                <a
+                  href="#pricing"
+                  className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-6 py-4 text-base font-semibold text-white transition hover:bg-white/10"
+                >
+                  See Pricing
+                </a>
+              </div>
+            </div>
 
-        <p
-          style={{
-            maxWidth: 720,
-            margin: "0 auto 30px",
-            fontSize: 19,
-            lineHeight: 1.75,
-            color: c.fg,
-            opacity: 0.92,
-          }}
-        >
-          ServiceLock recovers those jobs automatically.
-        </p>
+            <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-8 shadow-2xl shadow-black/30 backdrop-blur">
+              <div className="mb-6 flex items-center gap-3">
+                <div className="rounded-2xl bg-[#F59E0B]/15 p-3 text-[#F59E0B]">
+                  <PhoneCall className="h-6 w-6" />
+                </div>
+                <div>
+                  <p className="text-sm uppercase tracking-[0.2em] text-white/50">Why it works</p>
+                  <p className="text-xl font-semibold">The first company to respond usually wins</p>
+                </div>
+              </div>
 
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            gap: 14,
-          }}
-        >
-          <a
-            href="tel:9142668127"
-            style={{
-              background: c.primary,
-              color: c.primaryFg,
-              textDecoration: "none",
-              padding: "16px 24px",
-              borderRadius: 16,
-              fontWeight: 800,
-              boxShadow: `0 14px 34px ${c.glow}`,
-            }}
-          >
-            Call the Live Demo: (914) 266-8127
-          </a>
+              <div className="space-y-4">
+                {[
+                  "Missed callers rarely leave voicemails",
+                  "Emergency and quote calls go to the next company fast",
+                  "Speed wins, especially after hours and on busy days",
+                  "One recovered job can pay for the service",
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-start gap-3 rounded-2xl border border-white/10 bg-black/20 p-4"
+                  >
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#F59E0B]" />
+                    <p className="text-white/75">{item}</p>
+                  </div>
+                ))}
+              </div>
 
-          <a
-            href="#pricing"
-            style={{
-              background: "rgba(255,255,255,0.03)",
-              color: c.fg,
-              textDecoration: "none",
-              padding: "16px 24px",
-              borderRadius: 16,
-              fontWeight: 700,
-              border: `1px solid ${c.border}`,
-            }}
-          >
-            Get Started
-          </a>
+              <div className="mt-8 rounded-2xl border border-[#F59E0B]/20 bg-[#F59E0B]/10 p-5">
+                <p className="text-sm uppercase tracking-[0.2em] text-[#F59E0B]">Simple offer</p>
+                <p className="mt-2 text-3xl font-semibold">$497/month</p>
+                <p className="mt-2 text-white/70">No setup fee. No contract. Cancel anytime.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section style={{ ...wrap, paddingBottom: 28 }}>
-        <div style={card}>
-          <div
-            className={heading.className}
-            style={{
-              fontSize: "clamp(28px, 4vw, 40px)",
-              lineHeight: 1,
-              letterSpacing: "-0.01em",
-              textAlign: "center",
-              marginBottom: 16,
-            }}
-          >
-            You’re Losing Real Money
-            <br />
-            Every Time You Miss a Call
+      <section className="border-b border-white/10">
+        <div className="mx-auto max-w-6xl px-6 py-24 sm:px-8 sm:py-28 lg:px-12 lg:py-32">
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#F59E0B]">
+              ROI
+            </p>
+            <h2 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
+              You’re Losing Real Money Every Time You Miss a Call
+            </h2>
+            <p className="mt-6 text-lg leading-8 text-white/70">
+              Miss just a few calls per week and you’re quietly losing thousands every month.
+            </p>
           </div>
 
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              flexWrap: "wrap",
-              gap: 14,
-              marginBottom: 18,
-            }}
-          >
-            {["$500", "$1,500", "$5,000+"].map((item) => (
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {[
+              { amount: "$500", label: "Small repair or service call" },
+              { amount: "$1,500", label: "Mid-sized job or urgent issue" },
+              { amount: "$5,000+", label: "High-value project or replacement" },
+            ].map((item) => (
               <div
-                key={item}
-                className={heading.className}
-                style={{
-                  fontSize: 32,
-                  lineHeight: 1,
-                  padding: "14px 18px",
-                  borderRadius: 16,
-                  background: "rgba(245,165,3,0.08)",
-                  border: "1px solid rgba(245,165,3,0.20)",
-                  color: c.primary,
-                  minWidth: 120,
-                  textAlign: "center",
-                }}
+                key={item.amount}
+                className="rounded-3xl border border-white/10 bg-white/[0.04] p-8"
               >
-                {item}
+                <div className="flex items-center gap-3">
+                  <div className="rounded-2xl bg-[#F59E0B]/15 p-3 text-[#F59E0B]">
+                    <DollarSign className="h-6 w-6" />
+                  </div>
+                  <p className="text-sm uppercase tracking-[0.2em] text-white/50">Missed value</p>
+                </div>
+                <p className="mt-6 text-5xl font-semibold tracking-tight">{item.amount}</p>
+                <p className="mt-4 text-white/65">{item.label}</p>
               </div>
             ))}
           </div>
 
-          <p
-            style={{
-              maxWidth: 760,
-              margin: "0 auto",
-              textAlign: "center",
-              color: c.muted,
-              fontSize: 18,
-              lineHeight: 1.8,
-            }}
-          >
-            Miss just a few calls per week and you’re losing thousands every month.
-          </p>
+          <div className="mt-12 rounded-3xl border border-[#F59E0B]/20 bg-[#F59E0B]/10 p-8">
+            <p className="text-2xl font-semibold">
+              Right now, when you miss the call, your competitor gets the chance to win it.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section style={{ ...wrap, paddingTop: 28, paddingBottom: 28 }}>
-        <h2
-          className={heading.className}
-          style={{
-            fontSize: "clamp(28px, 4vw, 40px)",
-            lineHeight: 1,
-            letterSpacing: "-0.01em",
-            textAlign: "center",
-            margin: "0 0 22px",
-          }}
-        >
-          ServiceLock Flips That
-        </h2>
+      <section className="border-b border-white/10">
+        <div className="mx-auto max-w-6xl px-6 py-24 sm:px-8 sm:py-28 lg:px-12 lg:py-32">
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#F59E0B]">
+              How it works
+            </p>
+            <h2 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
+              ServiceLock Fixes It Automatically
+            </h2>
+          </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))",
-            gap: 18,
-          }}
-        >
-          {[
-            {
-              n: "1",
-              title: "We Respond Instantly",
-              text: "The moment you miss the call, we step in.",
-            },
-            {
-              n: "2",
-              title: "We Capture the Job",
-              text: "We qualify the lead and keep them from moving on.",
-            },
-            {
-              n: "3",
-              title: "We Send You the Lead",
-              text: "You call back and close it.",
-            },
-          ].map((item) => (
-            <div key={item.n} style={card}>
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                icon: <Zap className="h-6 w-6" />,
+                step: "01",
+                title: "Instant Response",
+                description:
+                  "The moment you miss the call, we text back while they’re still looking for help.",
+              },
+              {
+                icon: <ClipboardList className="h-6 w-6" />,
+                step: "02",
+                title: "Lead Qualification",
+                description:
+                  "We capture the job details, urgency, and contact info so you know who is worth calling first.",
+              },
+              {
+                icon: <Send className="h-6 w-6" />,
+                step: "03",
+                title: "Ready-To-Book Lead",
+                description:
+                  "You get a clean lead summary and call back with context, speed, and a better chance to close.",
+              },
+            ].map((item) => (
               <div
-                style={{
-                  width: 46,
-                  height: 46,
-                  margin: "0 auto 14px",
-                  borderRadius: 999,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontWeight: 800,
-                  background: "rgba(245,165,3,0.14)",
-                  color: c.primary,
-                  border: "1px solid rgba(245,165,3,0.24)",
-                }}
+                key={item.step}
+                className="rounded-3xl border border-white/10 bg-white/[0.04] p-8"
               >
-                {item.n}
+                <div className="flex items-center justify-between">
+                  <div className="rounded-2xl bg-[#F59E0B]/15 p-3 text-[#F59E0B]">{item.icon}</div>
+                  <span className="text-sm font-semibold tracking-[0.2em] text-white/40">
+                    {item.step}
+                  </span>
+                </div>
+                <h3 className="mt-6 text-2xl font-semibold">{item.title}</h3>
+                <p className="mt-4 leading-8 text-white/70">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" className="border-b border-white/10">
+        <div className="mx-auto max-w-5xl px-6 py-24 sm:px-8 sm:py-28 lg:px-12 lg:py-32">
+          <div className="rounded-[2rem] border border-[#F59E0B]/20 bg-gradient-to-b from-[#F59E0B]/10 to-white/[0.03] p-8 sm:p-12">
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#F59E0B]">
+                Pricing
+              </p>
+              <h2 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
+                $497 Per Month
+              </h2>
+              <p className="mt-5 text-lg text-white/70">
+                Flat monthly pricing for missed call recovery, lead qualification, and lead delivery.
+              </p>
+
+              <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-sm text-white/75">
+                <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2">No setup fee</span>
+                <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2">No contract</span>
+                <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2">Cancel anytime</span>
               </div>
 
-              <div
-                className={heading.className}
-                style={{
-                  fontSize: 24,
-                  lineHeight: 1.05,
-                  textAlign: "center",
-                  marginBottom: 10,
-                }}
-              >
-                {item.title}
+              <div className="mt-10 space-y-3 text-lg text-white/85">
+                <p>One recovered job can cover the entire cost.</p>
+                <p>Two or more recovered jobs = profit.</p>
+                <p>Everything after that is upside.</p>
               </div>
 
-              <div
-                style={{
-                  color: c.muted,
-                  lineHeight: 1.75,
-                  textAlign: "center",
-                  fontSize: 16,
-                }}
-              >
-                {item.text}
+              <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
+                <a
+                  href="tel:9142668127"
+                  className="inline-flex items-center justify-center rounded-2xl bg-[#F59E0B] px-6 py-4 text-base font-semibold text-[#0B1020] transition hover:scale-[1.01] hover:bg-[#fbbf24]"
+                >
+                  Call the Live Demo
+                </a>
+                <a
+                  href="#cta"
+                  className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-6 py-4 text-base font-semibold text-white transition hover:bg-white/10"
+                >
+                  Book Your 15-Minute Setup Call
+                </a>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
-
-      <section style={{ ...wrap, paddingTop: 28, paddingBottom: 28 }}>
-        <div
-          style={{
-            ...card,
-            background: `
-              linear-gradient(180deg, rgba(245,165,3,0.07), rgba(245,165,3,0.02)),
-              linear-gradient(180deg, ${c.card}, ${c.secondary})
-            `,
-            border: "1px solid rgba(245,165,3,0.22)",
-          }}
-        >
-          <div
-            className={heading.className}
-            style={{
-              fontSize: "clamp(28px, 4vw, 40px)",
-              lineHeight: 1,
-              textAlign: "center",
-              color: c.primary,
-              marginBottom: 12,
-            }}
-          >
-            $497 Per Month
-          </div>
-
-          <div
-            style={{
-              maxWidth: 760,
-              margin: "0 auto",
-              textAlign: "center",
-              fontSize: 20,
-              lineHeight: 1.8,
-              color: c.fg,
-            }}
-          >
-            One recovered job can cover the entire cost.
-            <br />
-            <strong>Two or more recovered jobs = profit.</strong>
-            <br />
-            Everything after that is upside.
           </div>
         </div>
       </section>
 
-      <section style={{ ...wrap, paddingTop: 28, paddingBottom: 28 }}>
-        <div style={card}>
-          <div
-            className={heading.className}
-            style={{
-              fontSize: "clamp(28px, 4vw, 40px)",
-              lineHeight: 1,
-              textAlign: "center",
-              marginBottom: 12,
-            }}
-          >
-            The First Company To Respond
-            <br />
-            Usually Wins
-          </div>
+      <section id="cta">
+        <div className="mx-auto max-w-5xl px-6 py-24 sm:px-8 sm:py-28 lg:px-12 lg:py-32">
+          <div className="text-center">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#F59E0B]">
+              Close
+            </p>
+            <h2 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
+              Stop Losing Jobs To Missed Calls
+            </h2>
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/70">
+              Call the demo or book your 15-minute setup call and see how ServiceLock helps you win more of the calls you’re already paying for.
+            </p>
 
-          <p
-            style={{
-              maxWidth: 760,
-              margin: "0 auto",
-              textAlign: "center",
-              color: c.muted,
-              fontSize: 18,
-              lineHeight: 1.8,
-            }}
-          >
-            ServiceLock makes sure you’re not the one losing.
-          </p>
-        </div>
-      </section>
-
-      <section id="pricing" style={{ ...wrap, paddingTop: 28, paddingBottom: 96 }}>
-        <div style={card}>
-          <div
-            className={heading.className}
-            style={{
-              fontSize: "clamp(28px, 4vw, 40px)",
-              lineHeight: 1,
-              textAlign: "center",
-              marginBottom: 10,
-            }}
-          >
-            Stop Losing Jobs To Missed Calls
-          </div>
-
-          <p
-            style={{
-              maxWidth: 760,
-              margin: "0 auto 28px",
-              textAlign: "center",
-              color: c.muted,
-              fontSize: 18,
-              lineHeight: 1.8,
-            }}
-          >
-            Call the demo or book your 15-minute setup call.
-          </p>
-
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: 14,
-              flexWrap: "wrap",
-            }}
-          >
-            <a
-              href="tel:9142668127"
-              style={{
-                background: c.primary,
-                color: c.primaryFg,
-                textDecoration: "none",
-                padding: "16px 24px",
-                borderRadius: 16,
-                fontWeight: 800,
-                boxShadow: `0 14px 34px ${c.glow}`,
-              }}
-            >
-              Call the Live Demo: (914) 266-8127
-            </a>
-
-            <a
-              href="mailto:hello@servicelock.com?subject=ServiceLock%20Setup%20Call"
-              style={{
-                background: "rgba(255,255,255,0.03)",
-                color: c.fg,
-                textDecoration: "none",
-                padding: "16px 24px",
-                borderRadius: 16,
-                fontWeight: 700,
-                border: `1px solid ${c.border}`,
-              }}
-            >
-              Book Your 15-Minute Setup Call
-            </a>
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
+              <a
+                href="tel:9142668127"
+                className="inline-flex items-center justify-center rounded-2xl bg-[#F59E0B] px-6 py-4 text-base font-semibold text-[#0B1020] transition hover:scale-[1.01] hover:bg-[#fbbf24]"
+              >
+                Call the Live Demo: (914) 266-8127
+              </a>
+              <a
+                href="mailto:hello@getservicelock.com?subject=ServiceLock%20Setup%20Call"
+                className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-6 py-4 text-base font-semibold text-white transition hover:bg-white/10"
+              >
+                Book Your 15-Minute Setup Call
+              </a>
+            </div>
           </div>
         </div>
       </section>
