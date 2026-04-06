@@ -228,8 +228,10 @@ const Hero = () => (
               <div>
                 <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground">
   Example workflow
+<p className="text-xs uppercase tracking-[0.22em] text-muted-foreground">
+  Example workflow
 </p>
-<h2 className="mt-2 text-2xl font-bold">What you get</h2>
+<h2 className="mt-2 text-2xl font-bold">How ServiceLock helps</h2>
               </div>
               <ShieldCheck className="h-8 w-8 text-primary" />
             </div>
