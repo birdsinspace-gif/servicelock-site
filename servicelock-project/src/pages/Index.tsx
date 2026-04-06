@@ -165,7 +165,7 @@ const StickyNav = () => (
       </nav>
 
       <Button variant="hero" size="sm" asChild>
-        <a href="tel:+19142668127">Call Demo</a>
+        <a href="tel:+18665150533">Call Demo</a>
       </Button>
     </div>
   </header>
@@ -204,7 +204,7 @@ const Hero = () => (
 
           <motion.div {...anim(0.15)} className="mt-8 flex flex-wrap gap-4">
             <Button variant="hero" size="lg" className="px-6 py-6 text-base" asChild>
-              <a href="tel:+19142668127">Call the Live Demo: (914) 266-8127</a>
+              <a href="tel:+18665150533">Call the Live Demo: (866) 515-0533</a>
             </Button>
             <Button
               variant="heroOutline"
@@ -599,7 +599,7 @@ const Pricing = () => (
 
             <div className="mt-8 flex flex-col gap-3">
               <Button variant="hero" size="lg" className="w-full" asChild>
-                <a href="tel:+19142668127">Call the Live Demo</a>
+                <a href="tel:+18665150533">Call the Live Demo</a>
               </Button>
               <Button variant="heroOutline" size="lg" className="w-full" asChild>
                 <a href="#faq">Read FAQ</a>
@@ -667,7 +667,7 @@ const FinalCTA = () => (
 
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <Button variant="hero" size="lg" className="px-6 py-6 text-base" asChild>
-            <a href="tel:+19142668127">Call the Live Demo: (914) 266-8127</a>
+            <a href="tel:+18665150533">Call the Live Demo: (866) 515-0533</a>
           </Button>
           <Button
             variant="heroOutline"
@@ -704,7 +704,7 @@ const Footer = () => (
         </div>
 
         <div className="text-sm text-muted-foreground md:text-right">
-          <div>Live Demo: (914) 266-8127</div>
+          <div>Live Demo: (866) 515-0533</div>
           <div className="mt-1">Simple monthly pricing, no contract</div>
         </div>
       </div>
