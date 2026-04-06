@@ -227,9 +227,9 @@ const Hero = () => (
             <div className="mb-5 flex items-center justify-between">
               <div>
                 <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground">
-                  Example workflow
-                </p>
-                <h2 className="mt-2 text-2xl font-bold">What the buyer sees</h2>
+  Example workflow
+</p>
+<h2 className="mt-2 text-2xl font-bold">What you get</h2>
               </div>
               <ShieldCheck className="h-8 w-8 text-primary" />
             </div>
