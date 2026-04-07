@@ -22,7 +22,7 @@ const tiers = [
       'Basic analytics dashboard',
       'No setup fee • No contract • Cancel anytime',
     ],
-    cta: 'Call Demo',
+    cta: 'Start 14-Day Free Trial',
     popular: false,
   },
   {
@@ -40,7 +40,7 @@ const tiers = [
       'Team access up to 8 users',
       'No setup fee • No contract • Cancel anytime',
     ],
-    cta: 'Call Demo',
+    cta: 'Start 14-Day Free Trial',
     popular: true,
   },
   {
@@ -58,13 +58,74 @@ const tiers = [
       'Low-cost usage overages if needed',
       'No setup fee • No contract • Cancel anytime',
     ],
-    cta: 'Call Demo',
+    cta: 'Start 14-Day Free Trial',
     popular: false,
   },
 ];
 
+type FormState = {
+  fullName: string;
+  companyName: string;
+  phone: string;
+  email: string;
+  industry: string;
+  missedCallProblem: string;
+};
+
+const initialFormState: FormState = {
+  fullName: '',
+  companyName: '',
+  phone: '',
+  email: '',
+  industry: '',
+  missedCallProblem: '',
+};
+
 export default function ServiceLock() {
   const [isAnnual, setIsAnnual] = useState(false);
+  const [formData, setFormData] = useState<FormState>(initialFormState);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError('');
+    setSubmitSuccess(false);
+
+    try {
+      const res = await fetch('/api/trial', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data?.message || 'Something went wrong.');
+      }
+
+      setSubmitSuccess(true);
+      setFormData(initialFormState);
+    } catch (error) {
+      const message =
+        error instanceof Error ? error.message : 'Something went wrong.';
+      setSubmitError(message);
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
+  function updateField(
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  }
 
   return (
     <>
@@ -124,7 +185,7 @@ export default function ServiceLock() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
-              href="#pricing"
+              href="#trial"
               className="bg-yellow-500 hover:bg-yellow-400 text-zinc-950 px-10 py-4 rounded-2xl text-lg font-semibold flex items-center justify-center gap-3 transition-all"
             >
               Start 14-Day Free Trial
@@ -144,7 +205,10 @@ export default function ServiceLock() {
             No credit card required • No setup fee • Cancel anytime
           </p>
           <p className="text-sm text-zinc-400 mt-3">
-            Demo line: <a href={`tel:${DEMO_NUMBER}`} className="hover:text-yellow-400 transition-colors">{DISPLAY_NUMBER}</a>
+            Demo line:{' '}
+            <a href={`tel:${DEMO_NUMBER}`} className="hover:text-yellow-400 transition-colors">
+              {DISPLAY_NUMBER}
+            </a>
           </p>
         </div>
       </section>
@@ -318,13 +382,12 @@ export default function ServiceLock() {
                   </ul>
 
                   <a
-                    href={`tel:${DEMO_NUMBER}`}
+                    href="#trial"
                     className={`block text-center py-4 rounded-2xl font-semibold text-lg transition-all ${
                       tier.popular
                         ? 'bg-yellow-500 hover:bg-yellow-400 text-zinc-950'
                         : 'bg-zinc-800 hover:bg-zinc-700 border border-zinc-700'
                     }`}
-                    aria-label={`Call demo at ${DISPLAY_NUMBER}`}
                   >
                     {tier.cta}
                   </a>
@@ -336,6 +399,143 @@ export default function ServiceLock() {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* Trial Form */}
+      <section id="trial" className="py-24 px-6 bg-zinc-950 border-t border-zinc-800">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-5xl font-bold tracking-tight mb-4">Start Your 14-Day Free Trial</h2>
+            <p className="text-xl text-zinc-400">
+              Tell us a little about your business. We’ll review the fit and reach out fast.
+            </p>
+          </div>
+
+          <form
+            onSubmit={handleSubmit}
+            className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 md:p-10 space-y-6"
+          >
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="fullName" className="block text-sm font-medium mb-2">
+                  Full Name
+                </label>
+                <input
+                  id="fullName"
+                  name="fullName"
+                  type="text"
+                  required
+                  value={formData.fullName}
+                  onChange={updateField}
+                  className="w-full bg-zinc-950 border border-zinc-700 rounded-2xl px-4 py-3 text-white outline-none focus:border-yellow-400"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="companyName" className="block text-sm font-medium mb-2">
+                  Company Name
+                </label>
+                <input
+                  id="companyName"
+                  name="companyName"
+                  type="text"
+                  required
+                  value={formData.companyName}
+                  onChange={updateField}
+                  className="w-full bg-zinc-950 border border-zinc-700 rounded-2xl px-4 py-3 text-white outline-none focus:border-yellow-400"
+                />
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="phone" className="block text-sm font-medium mb-2">
+                  Phone
+                </label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  required
+                  value={formData.phone}
+                  onChange={updateField}
+                  className="w-full bg-zinc-950 border border-zinc-700 rounded-2xl px-4 py-3 text-white outline-none focus:border-yellow-400"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium mb-2">
+                  Email
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={updateField}
+                  className="w-full bg-zinc-950 border border-zinc-700 rounded-2xl px-4 py-3 text-white outline-none focus:border-yellow-400"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="industry" className="block text-sm font-medium mb-2">
+                Industry
+              </label>
+              <select
+                id="industry"
+                name="industry"
+                required
+                value={formData.industry}
+                onChange={updateField}
+                className="w-full bg-zinc-950 border border-zinc-700 rounded-2xl px-4 py-3 text-white outline-none focus:border-yellow-400"
+              >
+                <option value="">Select one</option>
+                <option value="HVAC">HVAC</option>
+                <option value="Plumbing">Plumbing</option>
+                <option value="Electrical">Electrical</option>
+                <option value="Roofing">Roofing</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div>
+              <label htmlFor="missedCallProblem" className="block text-sm font-medium mb-2">
+                What happens today when you miss a call?
+              </label>
+              <textarea
+                id="missedCallProblem"
+                name="missedCallProblem"
+                required
+                rows={5}
+                value={formData.missedCallProblem}
+                onChange={updateField}
+                className="w-full bg-zinc-950 border border-zinc-700 rounded-2xl px-4 py-3 text-white outline-none focus:border-yellow-400 resize-none"
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full bg-yellow-500 hover:bg-yellow-400 disabled:opacity-60 disabled:cursor-not-allowed text-zinc-950 px-8 py-4 rounded-2xl text-lg font-semibold transition-all"
+            >
+              {isSubmitting ? 'Submitting...' : 'Start 14-Day Free Trial'}
+            </button>
+
+            {submitSuccess && (
+              <div className="rounded-2xl border border-green-500/30 bg-green-500/10 px-4 py-3 text-green-300">
+                Thanks, your trial request is in. Check your email and we’ll follow up fast.
+              </div>
+            )}
+
+            {submitError && (
+              <div className="rounded-2xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-red-300">
+                {submitError}
+              </div>
+            )}
+          </form>
         </div>
       </section>
 
@@ -374,7 +574,7 @@ export default function ServiceLock() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
-              href="#pricing"
+              href="#trial"
               className="inline-block bg-yellow-500 hover:bg-yellow-400 text-zinc-950 px-12 py-5 rounded-2xl text-xl font-semibold transition-all"
             >
               Start Your 14-Day Free Trial
