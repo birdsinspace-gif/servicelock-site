@@ -594,8 +594,8 @@ export default function ServiceLock() {
         </div>
       </section>
 
-      {/* Footer */}
-     <footer className="bg-zinc-950 py-12 px-6 border-t border-zinc-900">
+   {/* Footer */}
+<footer className="bg-zinc-950 py-12 px-6 border-t border-zinc-900">
   <div className="max-w-6xl mx-auto text-center text-sm text-zinc-500">
     © {new Date().getFullYear()} ServiceLock. All rights reserved.
     <br />
@@ -605,7 +605,7 @@ export default function ServiceLock() {
       {DISPLAY_NUMBER}
     </a>
 
-    {/* NEW LINKS */}
+    {/* Links */}
     <div className="mt-6 flex justify-center gap-6 text-sm text-zinc-400">
       <a href="/terms" className="hover:text-white transition">
         Terms
@@ -616,5 +616,3 @@ export default function ServiceLock() {
     </div>
   </div>
 </footer>
-  );
-}
