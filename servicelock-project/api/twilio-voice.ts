@@ -20,7 +20,7 @@ export default async function handler(req, res) {
       await client.messages.create({
         from: process.env.TWILIO_PHONE_NUMBER,
         to: caller,
-        body: 'Hi, thanks for calling ServiceLock. We just missed your call. What kind of service do you need?',
+        body: 'Hi, we just missed your call. What do you need help with?\n\nYou can reply here or answer these quick questions:\n• Service needed?\n• Zip code?\n• How urgent is it?',
       });
     }
   } catch (error) {
@@ -29,9 +29,7 @@ export default async function handler(req, res) {
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <Response>
-  <Say voice="alice">
-    Hi, thanks for calling ServiceLock. We just missed your call. We will text you right now so you can tell us what you need. If you do not receive a text, please visit www.getservicelock.com to get started.
-  </Say>
+  <Play>https://www.getservicelock.com/ServiceLock.mp3</Play>
 </Response>`;
 
   res.setHeader('Content-Type', 'text/xml');
