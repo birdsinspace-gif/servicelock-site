@@ -30,7 +30,7 @@ export default async function handler(req, res) {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <Response>
   <Say voice="alice">
-    Hi, thanks for calling ServiceLock. We just missed your call, but we will text you right now so you can tell us what you need.
+    Hi, thanks for calling ServiceLock. We just missed your call. We will text you right now so you can tell us what you need. If you do not receive a text, please visit www.getservicelock.com to get started.
   </Say>
 </Response>`;
 
