@@ -1,0 +1,32 @@
+export default function Terms() {
+  return (
+    <div className="min-h-screen bg-black text-white px-6 py-20">
+      <div className="max-w-3xl mx-auto">
+        <h1 className="text-4xl font-bold mb-8">Terms</h1>
+
+        <p className="mb-6">
+          ServiceLock helps businesses respond quickly when they miss a call.
+        </p>
+
+        <h2 className="text-xl font-semibold mt-8 mb-3">How it works</h2>
+        <p className="mb-6">
+          If you call a business and they miss your call, you may receive a follow-up text to help you get what you need faster.
+        </p>
+
+        <h2 className="text-xl font-semibold mt-8 mb-3">Messaging</h2>
+        <p className="mb-6">
+          Messages are only sent in response to your interaction. No marketing messages.
+        </p>
+
+        <h2 className="text-xl font-semibold mt-8 mb-3">Opt out</h2>
+        <p className="mb-6">
+          You can opt out anytime by replying STOP. For help, reply HELP.
+        </p>
+
+        <p className="mt-10 text-sm text-zinc-400">
+          We aim to make this helpful and reliable, but like any service, it may not be perfect 100% of the time.
+        </p>
+      </div>
+    </div>
+  );
+}
