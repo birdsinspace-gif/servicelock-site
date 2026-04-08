@@ -595,17 +595,26 @@ export default function ServiceLock() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-zinc-950 py-12 px-6 border-t border-zinc-900">
-        <div className="max-w-6xl mx-auto text-center text-sm text-zinc-500">
-          © {new Date().getFullYear()} ServiceLock. All rights reserved.
-          <br />
-          Built for service businesses that refuse to lose revenue to missed calls.
-          <br />
-          <a href={`tel:${DEMO_NUMBER}`} className="hover:text-yellow-400 transition-colors">
-            {DISPLAY_NUMBER}
-          </a>
-        </div>
-      </footer>
-    </>
+     <footer className="bg-zinc-950 py-12 px-6 border-t border-zinc-900">
+  <div className="max-w-6xl mx-auto text-center text-sm text-zinc-500">
+    © {new Date().getFullYear()} ServiceLock. All rights reserved.
+    <br />
+    Built for service businesses that refuse to lose revenue to missed calls.
+    <br />
+    <a href={`tel:${DEMO_NUMBER}`} className="hover:text-yellow-400 transition-colors">
+      {DISPLAY_NUMBER}
+    </a>
+
+    {/* NEW LINKS */}
+    <div className="mt-6 flex justify-center gap-6 text-sm text-zinc-400">
+      <a href="/terms" className="hover:text-white transition">
+        Terms
+      </a>
+      <a href="/privacy" className="hover:text-white transition">
+        Privacy
+      </a>
+    </div>
+  </div>
+</footer>
   );
 }
