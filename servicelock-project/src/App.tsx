@@ -19,17 +19,10 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-
-          {/* MAIN PAGE */}
           <Route path="/" element={<Index />} />
-
-          {/* NEW PAGES */}
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
-
-          {/* CATCH-ALL (KEEP LAST) */}
           <Route path="*" element={<NotFound />} />
-
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
