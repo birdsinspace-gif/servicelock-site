@@ -121,14 +121,14 @@ export default function ServiceLock() {
       {/* Navbar */}
       <nav id="top" className="fixed top-0 z-50 w-full border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-          <div className="flex items-center gap-3">
+          <a href="#top" className="flex items-center gap-3 transition-opacity hover:opacity-85">
             <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-yellow-500">
               <Zap className="h-5 w-5 text-zinc-950" />
             </div>
             <span className="text-2xl font-semibold tracking-tight">
               ServiceLock
             </span>
-          </div>
+          </a>
 
           <div className="flex items-center gap-8 text-sm">
             <a href="#how" className="transition-colors hover:text-yellow-400">

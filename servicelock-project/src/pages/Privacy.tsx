@@ -3,9 +3,9 @@ import { Zap } from "lucide-react";
 export default function Privacy() {
   return (
     <div className="min-h-screen bg-black text-white">
-      <nav className="fixed top-0 z-50 w-full border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-md">
+      <nav id="top" className="fixed top-0 z-50 w-full border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-          <a href="/#top" className="flex items-center gap-3 transition-opacity hover:opacity-85">
+          <a href="#top" className="flex items-center gap-3 transition-opacity hover:opacity-85">
             <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-yellow-500">
               <Zap className="h-5 w-5 text-zinc-950" />
             </div>
@@ -41,9 +41,6 @@ export default function Privacy() {
           We don’t sell your information. It’s only used to help connect you with the business you contacted.
         </p>
 
-        <p className="mt-10 text-sm text-zinc-400">
-          Questions? KyleDChristopher@gmail.com
-        </p>
       </div>
     </div>
   );
