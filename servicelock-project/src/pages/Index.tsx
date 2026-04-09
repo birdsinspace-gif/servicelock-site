@@ -72,7 +72,11 @@ export default function ServiceLock() {
   });
 
   const heroWordY = useTransform(heroProgress, [0, 1], ["0%", "30%"]);
-  const heroWordOpacity = useTransform(heroProgress, [0, 0.45, 1], [0.18, 0.09, 0]);
+  const heroWordOpacity = useTransform(
+    heroProgress,
+    [0, 0.45, 1],
+    [0.18, 0.09, 0]
+  );
 
   const roiWordY = useTransform(roiProgress, [0, 1], ["10%", "-15%"]);
   const roiWordOpacity = useTransform(roiProgress, [0, 0.5, 1], [0, 0.08, 0]);
@@ -110,7 +114,9 @@ export default function ServiceLock() {
   }
 
   function updateField(
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -121,20 +127,23 @@ export default function ServiceLock() {
       {/* Navbar */}
       <nav id="top" className="fixed top-0 z-50 w-full border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-          <div className="flex items-center gap-3">
+          <a href="#top" className="flex items-center gap-3">
             <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-yellow-500">
               <Zap className="h-5 w-5 text-zinc-950" />
             </div>
             <span className="text-2xl font-semibold tracking-tight">
               ServiceLock
             </span>
-          </div>
+          </a>
 
           <div className="flex items-center gap-8 text-sm">
             <a href="#how" className="transition-colors hover:text-yellow-400">
               How it works
             </a>
-            <a href="#pricing" className="transition-colors hover:text-yellow-400">
+            <a
+              href="#pricing"
+              className="transition-colors hover:text-yellow-400"
+            >
               Pricing
             </a>
             <a href="#faq" className="transition-colors hover:text-yellow-400">
@@ -154,6 +163,7 @@ export default function ServiceLock() {
 
       {/* Hero */}
       <section
+        id="top"
         ref={heroRef}
         className="relative overflow-hidden bg-gradient-to-b from-zinc-950 via-zinc-950 to-zinc-900 px-6 pb-24 pt-32"
       >
@@ -175,7 +185,9 @@ export default function ServiceLock() {
             className="mb-8 inline-flex items-center gap-2 rounded-full border border-zinc-700 bg-zinc-900/80 px-5 py-2 backdrop-blur-sm"
           >
             <span className="text-yellow-400">⚡</span>
-            <span className="text-sm font-medium">Missed calls = lost revenue</span>
+            <span className="text-sm font-medium">
+              Missed calls = lost revenue
+            </span>
           </motion.div>
 
           <motion.h1
@@ -267,9 +279,9 @@ export default function ServiceLock() {
             Turn Missed Calls Into Recovered Jobs
           </h2>
           <p className="mx-auto max-w-3xl text-xl text-zinc-400">
-            When customers can’t reach you, they call the next company. ServiceLock
-            responds faster, captures key details, and delivers warm leads so your
-            team calls back with context, not cold.
+            When customers can’t reach you, they call the next company.
+            ServiceLock responds faster, captures key details, and delivers warm
+            leads so your team calls back with context, not cold.
           </p>
         </div>
       </section>
@@ -295,15 +307,21 @@ export default function ServiceLock() {
 
               <div className="space-y-8 text-lg">
                 <div className="flex gap-4">
-                  <div className="font-mono text-2xl text-yellow-400">$500</div>
+                  <div className="font-mono text-2xl text-yellow-400">
+                    $500
+                  </div>
                   <div>Small repair or service call</div>
                 </div>
                 <div className="flex gap-4">
-                  <div className="font-mono text-2xl text-yellow-400">$1,500</div>
+                  <div className="font-mono text-2xl text-yellow-400">
+                    $1,500
+                  </div>
                   <div>Mid-sized job or urgent issue</div>
                 </div>
                 <div className="flex gap-4">
-                  <div className="font-mono text-2xl text-yellow-400">$5,000+</div>
+                  <div className="font-mono text-2xl text-yellow-400">
+                    $5,000+
+                  </div>
                   <div>High-value project or replacement</div>
                 </div>
               </div>
@@ -320,7 +338,8 @@ export default function ServiceLock() {
                 attractive.
               </p>
               <div className="mt-8 flex items-center gap-3 text-sm text-yellow-400">
-                <Clock className="h-5 w-5" /> One booked job can often justify the cost
+                <Clock className="h-5 w-5" /> One booked job can often justify
+                the cost
               </div>
             </div>
           </div>
@@ -392,8 +411,8 @@ export default function ServiceLock() {
               >
                 <h3 className="mb-4 text-2xl font-semibold">{industry}</h3>
                 <p className="text-sm text-zinc-400">
-                  After-hours emergencies, dispatch spikes, paid ad traffic, weekend
-                  calls, ServiceLock keeps leads warm.
+                  After-hours emergencies, dispatch spikes, paid ad traffic,
+                  weekend calls, ServiceLock keeps leads warm.
                 </p>
               </div>
             ))}
@@ -459,8 +478,8 @@ export default function ServiceLock() {
             </p>
 
             <p className="mt-3 text-center text-xs text-zinc-500">
-              If you're currently paying for an answering service, this usually costs
-              the same or less, but actually books more jobs.
+              If you're currently paying for an answering service, this usually
+              costs the same or less, but actually books more jobs.
             </p>
           </div>
         </div>
@@ -477,8 +496,8 @@ export default function ServiceLock() {
               Start Your 14-Day Free Trial
             </h2>
             <p className="text-xl text-zinc-400">
-              Tell us a little about your business. We’ll review the fit and reach
-              out fast.
+              Tell us a little about your business. We’ll review the fit and
+              reach out fast.
             </p>
           </div>
 
@@ -488,7 +507,10 @@ export default function ServiceLock() {
           >
             <div className="grid gap-6 md:grid-cols-2">
               <div>
-                <label htmlFor="fullName" className="mb-2 block text-sm font-medium">
+                <label
+                  htmlFor="fullName"
+                  className="mb-2 block text-sm font-medium"
+                >
                   Full Name
                 </label>
                 <input
@@ -523,7 +545,10 @@ export default function ServiceLock() {
 
             <div className="grid gap-6 md:grid-cols-2">
               <div>
-                <label htmlFor="phone" className="mb-2 block text-sm font-medium">
+                <label
+                  htmlFor="phone"
+                  className="mb-2 block text-sm font-medium"
+                >
                   Phone
                 </label>
                 <input
@@ -538,7 +563,10 @@ export default function ServiceLock() {
               </div>
 
               <div>
-                <label htmlFor="email" className="mb-2 block text-sm font-medium">
+                <label
+                  htmlFor="email"
+                  className="mb-2 block text-sm font-medium"
+                >
                   Email
                 </label>
                 <input
@@ -554,7 +582,10 @@ export default function ServiceLock() {
             </div>
 
             <div>
-              <label htmlFor="industry" className="mb-2 block text-sm font-medium">
+              <label
+                htmlFor="industry"
+                className="mb-2 block text-sm font-medium"
+              >
                 Industry
               </label>
               <select
@@ -602,8 +633,8 @@ export default function ServiceLock() {
 
             {submitSuccess && (
               <div className="rounded-2xl border border-green-500/30 bg-green-500/10 px-4 py-3 text-green-300">
-                Thanks, your trial request is in. Check your email and we’ll follow
-                up fast.
+                Thanks, your trial request is in. Check your email and we’ll
+                follow up fast.
               </div>
             )}
 
@@ -647,7 +678,10 @@ export default function ServiceLock() {
               ],
               ["Is there a contract?", "No contract. Cancel anytime."],
             ].map(([q, a], i) => (
-              <div key={i} className="border-b border-zinc-800 pb-8 last:border-0">
+              <div
+                key={i}
+                className="border-b border-zinc-800 pb-8 last:border-0"
+              >
                 <h3 className="mb-3 font-semibold">{q}</h3>
                 <p className="text-zinc-400">{a}</p>
               </div>
@@ -663,7 +697,8 @@ export default function ServiceLock() {
             Stop letting good calls disappear
           </h2>
           <p className="mb-10 text-2xl text-zinc-400">
-            You already earned the lead. Protect it with faster, smarter follow-up.
+            You already earned the lead. Protect it with faster, smarter
+            follow-up.
           </p>
 
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -695,7 +730,8 @@ export default function ServiceLock() {
         <div className="mx-auto max-w-6xl text-center text-sm text-zinc-500">
           © {new Date().getFullYear()} ServiceLock. All rights reserved.
           <br />
-          Built for service businesses that refuse to lose revenue to missed calls.
+          Built for service businesses that refuse to lose revenue to missed
+          calls.
           <br />
           <a
             href={`tel:${DEMO_NUMBER}`}
