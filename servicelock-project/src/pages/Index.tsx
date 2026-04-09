@@ -196,7 +196,7 @@ export default function ServiceLock() {
             transition={{ delay: 0.08, duration: 0.6 }}
             className="mb-6 text-6xl font-bold leading-[0.95] tracking-tighter md:text-7xl"
           >
-            ServiceLock
+            
             <br />
             Stop Losing Jobs
             <br />
