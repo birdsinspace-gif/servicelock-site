@@ -1,24 +1,37 @@
+import { Zap } from "lucide-react";
+
 export default function Terms() {
   return (
-    <div className="min-h-screen bg-black text-white px-6 py-20">
-      <div className="max-w-3xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8">Terms</h1>
+    <div className="min-h-screen bg-black text-white">
+      <nav className="fixed top-0 z-50 w-full border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-md">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
+          <a href="/#top" className="flex items-center gap-3 transition-opacity hover:opacity-85">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-yellow-500">
+              <Zap className="h-5 w-5 text-zinc-950" />
+            </div>
+            <span className="text-2xl font-semibold tracking-tight">ServiceLock</span>
+          </a>
+        </div>
+      </nav>
+
+      <div className="mx-auto max-w-3xl px-6 pb-20 pt-32">
+        <h1 className="mb-8 text-4xl font-bold">Terms</h1>
 
         <p className="mb-6">
           ServiceLock helps businesses respond quickly when they miss a call.
         </p>
 
-        <h2 className="text-xl font-semibold mt-8 mb-3">How it works</h2>
+        <h2 className="mb-3 mt-8 text-xl font-semibold">How it works</h2>
         <p className="mb-6">
           If you call a business and they miss your call, you may receive a follow-up text to help you get what you need faster.
         </p>
 
-        <h2 className="text-xl font-semibold mt-8 mb-3">Messaging</h2>
+        <h2 className="mb-3 mt-8 text-xl font-semibold">Messaging</h2>
         <p className="mb-6">
           Messages are only sent in response to your interaction. No marketing messages.
         </p>
 
-        <h2 className="text-xl font-semibold mt-8 mb-3">Opt out</h2>
+        <h2 className="mb-3 mt-8 text-xl font-semibold">Opt out</h2>
         <p className="mb-6">
           You can opt out anytime by replying STOP. For help, reply HELP.
         </p>
