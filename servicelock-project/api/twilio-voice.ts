@@ -1,15 +1,13 @@
 import twilio from 'twilio';
 
-const SMS_BODY = `Hey — thanks for your call.
+const SMS_BODY = `Hey, we just caught your call.
 
-We just caught your missed call. This is exactly how businesses capture new jobs instantly.
-
-To get started, just reply with:
+Reply with:
 
 1. What do you need help with?
 2. Is this urgent? (yes/no)
 
-We’ll take it from there 👍`;
+We’ll take it from there.`;
 
 const VOICE_MP3_URL = 'https://www.getservicelock.com/ServiceLock.mp3';
 
