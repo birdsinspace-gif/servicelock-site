@@ -3,16 +3,22 @@ import twilio from "twilio";
 
 export const runtime = "nodejs";
 
-const SMS_BODY =
-  "Hey, this is ServiceLock. We respond instantly to missed calls. What service do you need help with?";
+const SMS_BODY = `Hey — thanks for your call.
 
-const VOICE_MESSAGE =
-  "Thanks for calling ServiceLock. We are tied up right now, but we will text you immediately.";
+We just caught your missed call. This is exactly how businesses capture new jobs instantly.
+
+To get started, just reply with:
+
+1. What do you need help with?
+2. Is this urgent? (yes/no)
+
+We’ll take it from there 👍`;
+
+const VOICE_MP3_URL = "https://www.getservicelock.com/ServiceLock.mp3";
 
 function buildTwiml() {
   const response = new twilio.twiml.VoiceResponse();
-  response.say(VOICE_MESSAGE);
-  response.hangup();
+  response.play(VOICE_MP3_URL);
   return response.toString();
 }
 
@@ -25,7 +31,7 @@ async function sendFollowUpSms(callerNumber: string, calledNumber: string) {
     throw new Error("Missing required Twilio environment variables.");
   }
 
-  console.log("Attempting to send ServiceLock follow-up SMS.", {
+  console.log("Attempting to send missed-call follow-up SMS.", {
     from,
     to: callerNumber,
     calledNumber,
@@ -38,7 +44,7 @@ async function sendFollowUpSms(callerNumber: string, calledNumber: string) {
     to: callerNumber,
   });
 
-  console.log("ServiceLock follow-up SMS sent successfully.", {
+  console.log("Missed-call follow-up SMS sent successfully.", {
     sid: message.sid,
     status: message.status,
     from,
@@ -72,7 +78,7 @@ export async function POST(request: Request) {
     try {
       await sendFollowUpSms(from, to);
     } catch (error) {
-      console.error("Failed to send ServiceLock follow-up SMS.", {
+      console.error("Failed to send missed-call follow-up SMS.", {
         error,
         from: process.env.TWILIO_PHONE_NUMBER,
         to: from,

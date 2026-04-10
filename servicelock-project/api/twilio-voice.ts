@@ -1,5 +1,18 @@
 import twilio from 'twilio';
 
+const SMS_BODY = `Hey — thanks for your call.
+
+We just caught your missed call. This is exactly how businesses capture new jobs instantly.
+
+To get started, just reply with:
+
+1. What do you need help with?
+2. Is this urgent? (yes/no)
+
+We’ll take it from there 👍`;
+
+const VOICE_MP3_URL = 'https://www.getservicelock.com/ServiceLock.mp3';
+
 export default async function handler(req, res) {
   if (req.method === 'GET') {
     return res.status(200).json({
@@ -20,11 +33,12 @@ export default async function handler(req, res) {
     req.body?.To ||
     req.query?.To ||
     '';
+  const sender = process.env.TWILIO_PHONE_NUMBER;
 
   try {
     if (caller) {
-      console.log('Attempting to send ServiceLock follow-up SMS.', {
-        from: process.env.TWILIO_PHONE_NUMBER,
+      console.log('Attempting to send missed-call follow-up SMS.', {
+        from: sender,
         to: caller,
         calledNumber: recipient,
       });
@@ -35,23 +49,23 @@ export default async function handler(req, res) {
       );
 
       const message = await client.messages.create({
-        from: process.env.TWILIO_PHONE_NUMBER,
+        from: sender,
         to: caller,
-        body: 'Hey, this is ServiceLock. We respond instantly to missed calls. What service do you need help with?',
+        body: SMS_BODY,
       });
 
-      console.log('ServiceLock follow-up SMS sent successfully.', {
+      console.log('Missed-call follow-up SMS sent successfully.', {
         sid: message.sid,
         status: message.status,
-        from: process.env.TWILIO_PHONE_NUMBER,
+        from: sender,
         to: caller,
         calledNumber: recipient,
       });
     }
   } catch (error) {
-    console.error('Failed to send ServiceLock follow-up SMS.', {
+    console.error('Failed to send missed-call follow-up SMS.', {
       error,
-      from: process.env.TWILIO_PHONE_NUMBER,
+      from: sender,
       to: caller,
       calledNumber: recipient,
     });
@@ -59,8 +73,7 @@ export default async function handler(req, res) {
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <Response>
-  <Say>Thanks for calling ServiceLock. We are tied up right now, but we will text you immediately.</Say>
-  <Hangup/>
+  <Play>${VOICE_MP3_URL}</Play>
 </Response>`;
 
   res.setHeader('Content-Type', 'text/xml');
