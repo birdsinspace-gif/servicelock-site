@@ -11,8 +11,7 @@ To get started, just reply with:
 
 We’ll take it from there 👍`;
 
-const VOICE_MESSAGE =
-  'Thanks for calling. We are tied up right now, but we will text you immediately.';
+const VOICE_MP3_URL = 'https://www.getservicelock.com/ServiceLock.mp3';
 
 export default async function handler(req, res) {
   if (req.method === 'GET') {
@@ -74,8 +73,7 @@ export default async function handler(req, res) {
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <Response>
-  <Say>${VOICE_MESSAGE}</Say>
-  <Hangup/>
+  <Play>${VOICE_MP3_URL}</Play>
 </Response>`;
 
   res.setHeader('Content-Type', 'text/xml');

@@ -14,13 +14,11 @@ To get started, just reply with:
 
 We’ll take it from there 👍`;
 
-const VOICE_MESSAGE =
-  "Thanks for calling. We are tied up right now, but we will text you immediately.";
+const VOICE_MP3_URL = "https://www.getservicelock.com/ServiceLock.mp3";
 
-function buildTwiml(voiceMessage: string) {
+function buildTwiml() {
   const response = new twilio.twiml.VoiceResponse();
-  response.say(voiceMessage);
-  response.hangup();
+  response.play(VOICE_MP3_URL);
   return response.toString();
 }
 
@@ -93,5 +91,5 @@ export async function POST(request: Request) {
     });
   }
 
-  return xmlResponse(buildTwiml(VOICE_MESSAGE));
+  return xmlResponse(buildTwiml());
 }
