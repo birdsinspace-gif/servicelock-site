@@ -7,7 +7,7 @@ import {
   useTransform,
   type MotionValue,
 } from "framer-motion";
-import { Check, ArrowRight, Phone, Zap, Clock } from "lucide-react";
+import { Check, ArrowRight, Phone, Clock } from "lucide-react";
 
 const DEMO_NUMBER = "+14704085618";
 const DISPLAY_NUMBER = "(470) 408-5618";
@@ -128,9 +128,11 @@ export default function ServiceLock() {
       <nav id="top" className="fixed top-0 z-50 w-full border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
           <a href="#top" className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-yellow-500">
-              <Zap className="h-5 w-5 text-zinc-950" />
-            </div>
+            <img
+              src="/servicelock-mark.png"
+              alt="ServiceLock logo"
+              className="h-11 w-11 object-contain"
+            />
             <span className="text-2xl font-semibold tracking-tight">
               ServiceLock
             </span>
@@ -408,6 +410,49 @@ export default function ServiceLock() {
                 <p className="text-sm text-zinc-400">
                   After-hours emergencies, dispatch spikes, paid ad traffic,
                   weekend calls, ServiceLock keeps leads warm.
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Section */}
+      <section className="bg-zinc-950 px-6 py-24">
+        <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
+              Why Businesses Choose ServiceLock
+            </h2>
+          </div>
+
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                title: "Recover Lost Revenue",
+                description:
+                  "Missed calls often represent high-intent customers ready to book immediately.",
+              },
+              {
+                title: "Launch Fast",
+                description:
+                  "Most businesses are live in under 15 minutes with no complex setup.",
+              },
+              {
+                title: "Works With Your Existing Workflow",
+                description:
+                  "Keep your current phone number and processes. ServiceLock fits around your operation.",
+              },
+            ].map((card) => (
+              <div
+                key={card.title}
+                className="rounded-3xl border border-zinc-800 bg-zinc-900/90 p-8 shadow-[0_18px_50px_rgba(0,0,0,0.18)]"
+              >
+                <h3 className="text-2xl font-semibold tracking-tight text-white">
+                  {card.title}
+                </h3>
+                <p className="mt-4 leading-relaxed text-zinc-400">
+                  {card.description}
                 </p>
               </div>
             ))}
