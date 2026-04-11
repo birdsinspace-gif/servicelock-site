@@ -9,8 +9,8 @@ import {
 } from "framer-motion";
 import { Check, ArrowRight, Phone, Zap, Clock } from "lucide-react";
 
-const DEMO_NUMBER = "+18665150533";
-const DISPLAY_NUMBER = "(866) 515-0533";
+const DEMO_NUMBER = "+14704085618";
+const DISPLAY_NUMBER = "(470) 408-5618";
 
 type FormState = {
   fullName: string;
