@@ -250,9 +250,9 @@ export default function ServiceLock() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.34, duration: 0.6 }}
-            className="mt-8 text-sm text-zinc-500"
+            className="mx-auto mt-8 max-w-3xl text-sm leading-relaxed text-zinc-400"
           >
-            No credit card required • No setup fee • Cancel anytime
+            No credit card required · Setup in 15 minutes · Cancel anytime · Keep all captured leads
           </motion.p>
 
           <motion.p
@@ -710,26 +710,37 @@ export default function ServiceLock() {
           <div className="space-y-10 text-lg">
             {[
               [
-                "Does ServiceLock replace my receptionist or CSR?",
-                "No. It only activates on missed calls to speed up follow-up. Your team still handles live calls.",
+                "How does setup work?",
+                "Simply forward missed or after-hours calls to your ServiceLock number. We guide you through setup in minutes.",
               ],
               [
-                "Can I keep my current business number?",
-                "Yes. It works with your existing phone number.",
+                "Do I need a new phone number?",
+                "No. You keep your existing business number. ServiceLock works alongside your current phone setup.",
               ],
               [
-                "How fast does the customer get a response?",
-                "Usually within 5–15 seconds of the missed call.",
+                "How long does implementation take?",
+                "Most customers are live in under 15 minutes.",
               ],
               [
-                "What information gets captured?",
-                "Name, job type, urgency, callback preference, and any details the customer shares.",
+                "What if I already have office staff answering calls?",
+                "Perfect. ServiceLock is designed for missed calls, overflow, after-hours, and peak-demand periods.",
               ],
               [
-                "Who is this best for?",
-                "Mid-tier HVAC, plumbing, electrical, and roofing businesses where missed calls equal real lost revenue.",
+                "What happens if a caller does not respond to the text?",
+                "Nothing breaks. We simply capture the opportunity when they engage.",
               ],
-              ["Is there a contract?", "No contract. Cancel anytime."],
+              [
+                "Do I keep the leads?",
+                "Yes. Every recovered lead is yours to keep.",
+              ],
+              [
+                "Can I cancel anytime?",
+                "Yes. No contracts, no long-term commitments.",
+              ],
+              [
+                "How quickly will I see results?",
+                "Most businesses begin seeing recovered opportunities within the first week.",
+              ],
             ].map(([q, a], i) => (
               <div
                 key={i}
@@ -772,8 +783,8 @@ export default function ServiceLock() {
             </a>
           </div>
 
-          <p className="mt-8 text-sm text-zinc-500">
-            No setup fee • No contract • Cancel anytime
+          <p className="mx-auto mt-8 max-w-3xl text-sm leading-relaxed text-zinc-400">
+            No credit card required · Setup in 15 minutes · Cancel anytime · Keep all captured leads
           </p>
         </div>
       </section>
