@@ -350,35 +350,30 @@ export default function ServiceLock() {
       <section id="how" className="px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <div className="mb-16 text-center">
-            <h2 className="mb-4 text-5xl font-bold tracking-tight">
-              How ServiceLock Works
-            </h2>
-            <p className="text-xl text-zinc-400">
-              From missed call to warm handoff in seconds
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.28em] text-yellow-400">
+              How It Works
             </p>
+            <h2 className="text-5xl font-bold tracking-tight">
+              Start capturing missed revenue in minutes
+            </h2>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-4">
+          <div className="grid gap-8 md:grid-cols-3">
             {[
               {
                 num: "01",
-                title: "Missed call detected",
-                desc: "A customer calls while your team is on a job, after hours, or during dispatch.",
+                title: "Forward Your Missed Calls",
+                desc: "Route missed or after-hours calls to your ServiceLock number.",
               },
               {
                 num: "02",
-                title: "Instant response goes out",
-                desc: "A fast, professional SMS is sent while the customer is still deciding who to hire.",
+                title: "We Instantly Engage the Caller",
+                desc: "Automatic text follow-up begins immediately to capture intent and details.",
               },
               {
                 num: "03",
-                title: "Lead details get captured",
-                desc: "We collect name, job type, urgency, and callback preference.",
-              },
-              {
-                num: "04",
-                title: "Your team gets the handoff",
-                desc: "You receive a warm lead with full context, so your callback feels informed and fast.",
+                title: "Receive Qualified Opportunities",
+                desc: "Recovered leads are delivered directly to your team for follow-up.",
               },
             ].map((step, i) => (
               <div
