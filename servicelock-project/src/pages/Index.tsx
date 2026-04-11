@@ -420,6 +420,59 @@ export default function ServiceLock() {
         </div>
       </section>
 
+      {/* Founder Note */}
+      <section className="bg-black px-6 py-24">
+        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+          <div className="rounded-[2rem] border border-zinc-800 bg-zinc-900/80 p-8 shadow-[0_20px_60px_rgba(0,0,0,0.22)]">
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-yellow-400">
+              Founder Note
+            </p>
+            <h2 className="mt-5 text-3xl font-bold tracking-tight text-white md:text-4xl">
+              Built to recover revenue that should not be lost
+            </h2>
+            <div className="mt-8 space-y-3 text-sm text-zinc-400">
+              {[
+                "Built for real-world missed call scenarios",
+                "Fast to launch, simple to manage",
+                "Designed to protect revenue, not create complexity",
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="rounded-2xl border border-zinc-800 bg-zinc-950/80 px-4 py-3"
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex items-center">
+            <div className="max-w-3xl">
+              <p className="text-sm font-medium uppercase tracking-[0.24em] text-zinc-500">
+                Operator-minded by design
+              </p>
+              <p className="mt-6 text-lg leading-relaxed text-zinc-300 md:text-xl">
+                ServiceLock was built around a simple reality: most service
+                businesses are not losing leads because they lack demand, they
+                are losing leads because calls go unanswered at the wrong
+                moment.
+              </p>
+              <p className="mt-6 text-lg leading-relaxed text-zinc-400 md:text-xl">
+                We built ServiceLock to close that gap. The goal is not to
+                replace your team. It is to protect your business during missed
+                calls, after-hours gaps, overflow periods, and busy moments
+                when real revenue slips away.
+              </p>
+              <p className="mt-6 text-lg leading-relaxed text-zinc-400 md:text-xl">
+                Our standard is simple: fast setup, clear value, and a system
+                that helps serious operators capture more of the opportunities
+                they are already generating.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Pricing */}
       <section id="pricing" className="bg-black px-6 py-24">
         <div className="mx-auto max-w-4xl">
