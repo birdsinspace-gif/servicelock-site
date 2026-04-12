@@ -1,4 +1,4 @@
-const VOICE_MP3_URL = 'https://getservicelock.com/Hello.mp3';
+const VOICE_MP3_URL = 'https://www.getservicelock.com/Hello.mp3';
 
 function buildVoiceTwiml() {
   return `<?xml version="1.0" encoding="UTF-8"?>

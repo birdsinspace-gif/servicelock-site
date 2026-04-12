@@ -10,14 +10,14 @@ Reply YES or NO.`;
 const YES_BODY = `Great, you're ready to start recovering revenue from missed calls.
 
 Get set up in under 2 minutes:
-https://getservicelock.com/#trial`;
+https://www.getservicelock.com/#trial`;
 
 const NO_BODY = `All good.
 
 Just know most missed calls go to the next company within minutes.
 
 You can start free anytime:
-https://getservicelock.com/#trial`;
+https://www.getservicelock.com/#trial`;
 
 // In-memory conversation state is acceptable for this pass, but it should move
 // to durable storage later if this flow needs to survive cold starts.
