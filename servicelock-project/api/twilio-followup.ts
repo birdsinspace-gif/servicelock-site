@@ -19,6 +19,8 @@ Just know most missed calls go to the next company within minutes.
 You can start free anytime:
 https://www.getservicelock.com/#trial`;
 
+// In-memory conversation state is acceptable for this pass, but it should move
+// to durable storage later if this flow needs to survive cold starts.
 const conversationState = new Map();
 
 function getConversationStage(phoneNumber = '') {
