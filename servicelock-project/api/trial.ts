@@ -1,5 +1,8 @@
 import nodemailer from 'nodemailer';
 
+const OPERATIONAL_ALERT_EMAIL =
+  process.env.TRIAL_ALERT_EMAIL || 'KyleDChristopher@gmail.com';
+
 const nurtureSequence = [
   'Day 0: Welcome + setup instructions',
   'Day 1: Why missed calls cost real revenue',
@@ -96,7 +99,7 @@ export default async function handler(req, res) {
 
     await transporter.sendMail({
       from: `"ServiceLock" <${process.env.GMAIL_USER}>`,
-      to: process.env.TRIAL_ALERT_EMAIL,
+      to: OPERATIONAL_ALERT_EMAIL,
       replyTo: email,
       subject: `New ServiceLock Trial: ${firstName} ${lastName} - ${businessName}`,
       text: buildTrialSummary(lead),
