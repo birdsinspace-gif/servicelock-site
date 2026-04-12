@@ -22,7 +22,7 @@ import serviceLockLogo from "@/assets/servicelock-logo.png";
 const DEMO_NUMBER = "+14704085618";
 const DISPLAY_NUMBER = "(470) 408-5618";
 const DEMO_SMS_LINK = "sms:+14704085618";
-const BOOKING_URL = "https://calendly.com/";
+const BOOKING_URL = "https://calendly.com/kyledchristopher/demo";
 const TRIAL_SUCCESS_ROUTE = "/trial-started";
 
 type FormState = {
