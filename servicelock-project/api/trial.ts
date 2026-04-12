@@ -1,5 +1,4 @@
 import nodemailer from 'nodemailer';
-import { registerOnboardingLead } from './_lib/onboarding.ts';
 
 const OPERATIONAL_ALERT_EMAIL =
   process.env.TRIAL_ALERT_EMAIL || 'KyleDChristopher@gmail.com';
@@ -224,6 +223,7 @@ export default async function handler(req, res) {
     }
 
     try {
+      const { registerOnboardingLead } = await import('./_lib/onboarding.ts');
       await registerOnboardingLead({
         email: lead.email,
         firstName: lead.firstName,
