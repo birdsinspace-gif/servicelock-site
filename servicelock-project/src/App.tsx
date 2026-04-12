@@ -1,5 +1,6 @@
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
+import TrialStarted from './pages/TrialStarted';
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -20,6 +21,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/trial-started" element={<TrialStarted />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="*" element={<NotFound />} />

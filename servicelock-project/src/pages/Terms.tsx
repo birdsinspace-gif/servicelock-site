@@ -1,4 +1,4 @@
-import { Zap } from "lucide-react";
+import serviceLockLogo from "@/assets/servicelock-logo.png";
 
 export default function Terms() {
   return (
@@ -6,9 +6,13 @@ export default function Terms() {
       <nav className="fixed top-0 z-50 w-full border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
           <a href="/#top" className="flex items-center gap-3 transition-opacity hover:opacity-85">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-yellow-500">
-              <Zap className="h-5 w-5 text-zinc-950" />
-            </div>
+            <img
+              src={serviceLockLogo}
+              alt="ServiceLock"
+              className="h-10 w-10 rounded-2xl object-cover shadow-[0_0_30px_rgba(234,179,8,0.28)]"
+              width={1536}
+              height={1024}
+            />
             <span className="text-2xl font-semibold tracking-tight">ServiceLock</span>
           </a>
         </div>
