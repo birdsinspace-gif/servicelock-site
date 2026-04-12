@@ -222,20 +222,6 @@ export default async function handler(req, res) {
       console.error('ServiceLock HubSpot sync failed.', hubspotError);
     }
 
-    try {
-      const { registerOnboardingLead } = await import('./_lib/onboarding.ts');
-      await registerOnboardingLead({
-        email: lead.email,
-        firstName: lead.firstName,
-        businessName: lead.businessName,
-        phoneNumber: lead.phoneNumber,
-        website: lead.website,
-        replyTo: lead.email,
-      });
-    } catch (onboardingError) {
-      console.error('ServiceLock onboarding registration failed.', onboardingError);
-    }
-
     queueTrialAutomationPlaceholder(lead);
 
     return res.status(200).json({ success: true, next: '/trial-started' });
