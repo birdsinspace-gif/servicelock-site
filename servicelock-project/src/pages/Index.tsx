@@ -724,6 +724,17 @@ export default function ServiceLock() {
               {isSubmitting ? "Submitting..." : "Start 14-Day Free Trial"}
             </button>
 
+            <p className="py-2 text-center text-sm text-zinc-400">
+              Prefer to talk first?{" "}
+              <a
+                href={`tel:${DEMO_NUMBER}`}
+                className="font-medium text-zinc-300 underline decoration-zinc-600 underline-offset-2 transition-colors hover:text-yellow-400"
+                aria-label={`Call demo at ${DISPLAY_NUMBER}`}
+              >
+                Book a demo
+              </a>
+            </p>
+
             {submitSuccess && (
               <div className="rounded-2xl border border-green-500/30 bg-green-500/10 px-4 py-3 text-green-300">
                 Thanks, your trial request is in. Check your email and we’ll
