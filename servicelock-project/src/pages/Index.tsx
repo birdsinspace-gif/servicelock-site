@@ -727,9 +727,9 @@ export default function ServiceLock() {
             <p className="py-2 text-center text-sm text-zinc-400">
               Prefer to talk first?{" "}
               <a
-                href={`tel:${DEMO_NUMBER}`}
+                href="https://calendly.com/kyledchristopher/demo"
                 className="font-medium text-zinc-300 underline decoration-zinc-600 underline-offset-2 transition-colors hover:text-yellow-400"
-                aria-label={`Call demo at ${DISPLAY_NUMBER}`}
+                aria-label="Book a demo"
               >
                 Book a demo
               </a>
