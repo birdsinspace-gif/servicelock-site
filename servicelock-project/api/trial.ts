@@ -2,6 +2,17 @@ import nodemailer from 'nodemailer';
 
 const OPERATIONAL_ALERT_EMAIL =
   process.env.TRIAL_ALERT_EMAIL || 'KyleDChristopher@gmail.com';
+const HUBSPOT_ACCESS_TOKEN =
+  process.env.HUBSPOT_PRIVATE_APP_TOKEN || process.env.HUBSPOT_ACCESS_TOKEN;
+const HUBSPOT_NOTES_PROPERTY =
+  process.env.HUBSPOT_SERVICELOCK_NOTES_PROPERTY ||
+  process.env.HUBSPOT_NOTES_PROPERTY ||
+  '';
+const HUBSPOT_SOURCE_PROPERTY =
+  process.env.HUBSPOT_SERVICELOCK_SOURCE_PROPERTY ||
+  process.env.HUBSPOT_SOURCE_PROPERTY ||
+  '';
+const HUBSPOT_SOURCE_VALUE = 'servicelock_trial_form';
 
 const nurtureSequence = [
   'Day 0: Welcome + setup instructions',
@@ -36,6 +47,100 @@ Placeholder continuation CTA:
 - CTA copy: I'm Ready to Capture More Jobs
 - Billing link placeholder: ${process.env.STRIPE_CONTINUATION_LINK || 'REPLACE_WITH_STRIPE_PAYMENT_LINK'}
   `;
+}
+
+function buildHubSpotNoteValue(lead) {
+  return [
+    `Website: ${lead.website}`,
+    `Best Time to Reach You: ${lead.bestTimeToReachYou || 'Not provided'}`,
+    `Continuation Link: ${process.env.STRIPE_CONTINUATION_LINK || 'REPLACE_WITH_STRIPE_PAYMENT_LINK'}`,
+  ].join('\n');
+}
+
+async function upsertHubSpotContact(lead) {
+  if (!HUBSPOT_ACCESS_TOKEN) {
+    return { configured: false };
+  }
+
+  const properties = {
+    email: lead.email,
+    firstname: lead.firstName,
+    lastname: lead.lastName,
+    company: lead.businessName,
+    phone: lead.phoneNumber,
+  };
+
+  if (HUBSPOT_NOTES_PROPERTY) {
+    properties[HUBSPOT_NOTES_PROPERTY] = buildHubSpotNoteValue(lead);
+  }
+
+  if (HUBSPOT_SOURCE_PROPERTY) {
+    properties[HUBSPOT_SOURCE_PROPERTY] = HUBSPOT_SOURCE_VALUE;
+  }
+
+  const searchResponse = await fetch(
+    'https://api.hubapi.com/crm/v3/objects/contacts/search',
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${HUBSPOT_ACCESS_TOKEN}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        filterGroups: [
+          {
+            filters: [
+              {
+                propertyName: 'email',
+                operator: 'EQ',
+                value: lead.email,
+              },
+            ],
+          },
+        ],
+        properties: ['email'],
+        limit: 1,
+      }),
+    }
+  );
+
+  const searchPayload = await searchResponse.json().catch(() => null);
+
+  if (!searchResponse.ok) {
+    throw new Error(
+      searchPayload?.message ||
+        `HubSpot search failed with status ${searchResponse.status}.`
+    );
+  }
+
+  const existingId = searchPayload?.results?.[0]?.id;
+  const endpoint = existingId
+    ? `https://api.hubapi.com/crm/v3/objects/contacts/${existingId}`
+    : 'https://api.hubapi.com/crm/v3/objects/contacts';
+  const method = existingId ? 'PATCH' : 'POST';
+
+  const upsertResponse = await fetch(endpoint, {
+    method,
+    headers: {
+      Authorization: `Bearer ${HUBSPOT_ACCESS_TOKEN}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ properties }),
+  });
+
+  const upsertPayload = await upsertResponse.json().catch(() => null);
+
+  if (!upsertResponse.ok) {
+    throw new Error(
+      upsertPayload?.message ||
+        `HubSpot upsert failed with status ${upsertResponse.status}.`
+    );
+  }
+
+  return {
+    configured: true,
+    id: upsertPayload?.id || existingId || null,
+  };
 }
 
 function queueTrialAutomationPlaceholder(lead) {
@@ -98,12 +203,24 @@ export default async function handler(req, res) {
     });
 
     await transporter.sendMail({
-      from: `"ServiceLock" <${process.env.GMAIL_USER}>`,
+      from: `"Kyle" <${process.env.GMAIL_USER}>`,
       to: OPERATIONAL_ALERT_EMAIL,
       replyTo: email,
       subject: `New ServiceLock Trial: ${firstName} ${lastName} - ${businessName}`,
       text: buildTrialSummary(lead),
     });
+
+    try {
+      const hubspotResult = await upsertHubSpotContact(lead);
+      if (hubspotResult.configured) {
+        console.log('ServiceLock HubSpot contact synced.', {
+          email: lead.email,
+          id: hubspotResult.id,
+        });
+      }
+    } catch (hubspotError) {
+      console.error('ServiceLock HubSpot sync failed.', hubspotError);
+    }
 
     queueTrialAutomationPlaceholder(lead);
 
