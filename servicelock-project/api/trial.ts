@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+import { registerOnboardingLead } from './_lib/onboarding';
 
 const OPERATIONAL_ALERT_EMAIL =
   process.env.TRIAL_ALERT_EMAIL || 'KyleDChristopher@gmail.com';
@@ -220,6 +221,19 @@ export default async function handler(req, res) {
       }
     } catch (hubspotError) {
       console.error('ServiceLock HubSpot sync failed.', hubspotError);
+    }
+
+    try {
+      await registerOnboardingLead({
+        email: lead.email,
+        firstName: lead.firstName,
+        businessName: lead.businessName,
+        phoneNumber: lead.phoneNumber,
+        website: lead.website,
+        replyTo: lead.email,
+      });
+    } catch (onboardingError) {
+      console.error('ServiceLock onboarding registration failed.', onboardingError);
     }
 
     queueTrialAutomationPlaceholder(lead);
