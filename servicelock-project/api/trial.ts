@@ -1,5 +1,5 @@
 import nodemailer from 'nodemailer';
-import { registerOnboardingLead } from './_lib/onboarding';
+import { registerOnboardingLead } from './_lib/onboarding.ts';
 
 const OPERATIONAL_ALERT_EMAIL =
   process.env.TRIAL_ALERT_EMAIL || 'KyleDChristopher@gmail.com';
