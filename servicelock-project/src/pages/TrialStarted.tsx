@@ -2,11 +2,36 @@ import { Link } from "react-router-dom";
 import { CheckCircle2, Mail, Settings2, Sparkles } from "lucide-react";
 import serviceLockLogo from "@/assets/servicelock-logo.png";
 
-const setupChecklist = [
-  "Check your email",
-  "Follow the setup steps",
-  "Forward your number or connect your workflow",
-  "Start recovering missed opportunities",
+const setupCards = [
+  {
+    title: "Check your inbox",
+    body: "Your onboarding email has your setup link, quick-start steps, and everything you need to get live fast.",
+    Icon: Mail,
+  },
+  {
+    title: "Go live fast",
+    body: "No complicated setup. No heavy lift. Just follow the steps and turn missed calls into live leads.",
+    Icon: Settings2,
+  },
+];
+
+const nextSteps = [
+  {
+    title: "Step 1, Check your email",
+    body: "We sent your setup guide and onboarding link to your inbox.",
+  },
+  {
+    title: "Step 2, Connect your number",
+    body: "Forward missed calls or connect your workflow in a few clicks.",
+  },
+  {
+    title: "Step 3, Test your flow",
+    body: "Call your number, miss the call, and watch ServiceLock respond instantly.",
+  },
+  {
+    title: "Step 4, Start recovering jobs",
+    body: "Once you’re live, missed calls start turning into real opportunities.",
+  },
 ];
 
 export default function TrialStarted() {
@@ -32,30 +57,26 @@ export default function TrialStarted() {
               You’re In
             </p>
             <h1 className="mt-5 text-5xl font-bold tracking-tight">
-              Your free 14-day trial is ready.
+              Your 14-day trial is live.
             </h1>
             <p className="mt-6 max-w-2xl text-xl leading-relaxed text-zinc-400">
-              Check your email for setup instructions and next steps. We’ll help
-              you get live quickly and start capturing more missed-call leads.
+              Complete the setup below. Most businesses are live in under 10
+              minutes.
             </p>
 
             <div className="mt-10 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-3xl border border-zinc-800 bg-zinc-900/80 p-6">
-                <Mail className="h-6 w-6 text-yellow-400" />
-                <p className="mt-4 text-lg font-semibold">Watch your inbox</p>
-                <p className="mt-2 text-sm leading-relaxed text-zinc-400">
-                  Day 0 onboarding and setup instructions are ready to plug into
-                  the final email automation flow.
-                </p>
-              </div>
-              <div className="rounded-3xl border border-zinc-800 bg-zinc-900/80 p-6">
-                <Settings2 className="h-6 w-6 text-yellow-400" />
-                <p className="mt-4 text-lg font-semibold">Get live fast</p>
-                <p className="mt-2 text-sm leading-relaxed text-zinc-400">
-                  The setup is designed to feel simple, guided, and easy to
-                  finish without heavy lift.
-                </p>
-              </div>
+              {setupCards.map(({ title, body, Icon }) => (
+                <div
+                  key={title}
+                  className="rounded-3xl border border-zinc-800 bg-zinc-900/80 p-6"
+                >
+                  <Icon className="h-6 w-6 text-yellow-400" />
+                  <p className="mt-4 text-lg font-semibold">{title}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-zinc-400">
+                    {body}
+                  </p>
+                </div>
+              ))}
             </div>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
@@ -63,7 +84,7 @@ export default function TrialStarted() {
                 href="/#how"
                 className="inline-flex items-center justify-center rounded-2xl bg-yellow-500 px-8 py-4 text-lg font-semibold text-zinc-950 transition hover:bg-yellow-400"
               >
-                View Setup Instructions
+                View Setup Guide
               </a>
               <Link
                 to="/"
@@ -79,13 +100,20 @@ export default function TrialStarted() {
               What Happens Next
             </p>
             <div className="mt-6 space-y-4">
-              {setupChecklist.map((item) => (
+              {nextSteps.map((step) => (
                 <div
-                  key={item}
-                  className="flex items-start gap-3 rounded-2xl border border-zinc-800 bg-zinc-950/80 px-4 py-4"
+                  key={step.title}
+                  className="rounded-2xl border border-zinc-800 bg-zinc-950/80 px-5 py-5"
                 >
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-yellow-400" />
-                  <span className="text-zinc-300">{item}</span>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-yellow-400" />
+                    <div>
+                      <p className="font-semibold text-white">{step.title}</p>
+                      <p className="mt-1 text-sm leading-relaxed text-zinc-400">
+                        {step.body}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -94,13 +122,12 @@ export default function TrialStarted() {
               <div className="flex items-center gap-3">
                 <Sparkles className="h-5 w-5 text-yellow-400" />
                 <p className="font-semibold text-white">
-                  Trial nurture and continuation path
+                  Every missed call costs you money
                 </p>
               </div>
               <p className="mt-3 text-sm leading-relaxed text-zinc-300">
-                Placeholder hooks are ready for the welcome sequence, helpful
-                setup emails, trial-ending reminders, and the final payment-link
-                continuation CTA.
+                Get live today so your next missed call has a better chance of
+                becoming your next booked job.
               </p>
             </div>
           </div>
