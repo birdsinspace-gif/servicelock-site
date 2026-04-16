@@ -19,9 +19,8 @@ import {
 } from "lucide-react";
 import serviceLockLogo from "@/assets/servicelock-logo.png";
 
-const DEMO_NUMBER = "+14704085618";
-const DISPLAY_NUMBER = "(470) 408-5618";
-const DEMO_SMS_LINK = "sms:+14704085618";
+const DEMO_NUMBER = "+18665150533";
+const DISPLAY_NUMBER = "(866) 515-0533";
 const BOOKING_URL = "https://calendly.com/kyledchristopher/demo";
 const TRIAL_SUCCESS_ROUTE = "/trial-started";
 
@@ -60,11 +59,9 @@ const nextStepCards = [
     eyebrow: "Live Demo",
     title: "Try the Live Demo",
     description:
-      "Call 470-408-5618 to experience the missed-call flow for yourself and see exactly how it works. By calling, you agree to receive a demonstration SMS. Reply STOP to opt out.",
+      "Call (866) 515-0533 to experience the missed-call flow for yourself and see exactly how it works.",
     ctaLabel: "Call the Demo Line",
     href: `tel:${DEMO_NUMBER}`,
-    secondaryLabel: "Call the Demo Line",
-    secondaryHref: DEMO_SMS_LINK,
   },
   {
     eyebrow: "Talk-First Path",
@@ -333,8 +330,8 @@ export default function ServiceLock() {
           >
             <p className="font-medium text-white">Try the Live Demo</p>
             <p className="mt-2 leading-relaxed text-zinc-400">
-              Call {DISPLAY_NUMBER} to experience the missed-call flow
-              for yourself and see exactly how it works. By calling, you agree to receive a demonstration SMS. Reply STOP to opt out.
+              Call {DISPLAY_NUMBER} to experience the missed-call flow for
+              yourself and see exactly how it works.
             </p>
             <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
               <a
@@ -342,12 +339,6 @@ export default function ServiceLock() {
                 className="rounded-full border border-yellow-500/30 px-4 py-2 font-medium text-yellow-300 transition hover:border-yellow-400 hover:text-yellow-200"
               >
                 Call the Demo Line
-              </a>
-              <a
-                href={DEMO_SMS_LINK}
-                className="rounded-full border border-zinc-700 px-4 py-2 font-medium text-zinc-200 transition hover:border-zinc-500"
-              >
-                Text the Demo Line
               </a>
             </div>
           </motion.div>
@@ -410,15 +401,6 @@ export default function ServiceLock() {
                     <ChevronRight className="h-4 w-4" />
                   </a>
                 </div>
-
-                {card.secondaryLabel && card.secondaryHref ? (
-                  <a
-                    href={card.secondaryHref}
-                    className="mt-3 inline-flex items-center justify-center text-sm font-medium text-zinc-400 transition hover:text-white"
-                  >
-                    {card.secondaryLabel}
-                  </a>
-                ) : null}
 
                 {card.microcopy ? (
                   <p className="mt-4 text-sm text-zinc-500">{card.microcopy}</p>
@@ -495,7 +477,7 @@ export default function ServiceLock() {
               </div>
               <div className="flex items-start gap-3">
                 <MessageSquare className="mt-1 h-5 w-5 text-yellow-400" />
-                Instant response protects the lead while intent is high.
+                Instant follow-up protects the lead while intent is high.
               </div>
               <div className="flex items-start gap-3">
                 <CalendarDays className="mt-1 h-5 w-5 text-yellow-400" />
@@ -527,7 +509,7 @@ export default function ServiceLock() {
               {
                 num: "02",
                 title: "Instant response goes out",
-                desc: "A fast, professional SMS is sent while the customer is still deciding who to hire.",
+                desc: "A fast, professional follow-up is triggered while the customer is still deciding who to hire.",
               },
               {
                 num: "03",
@@ -611,7 +593,7 @@ export default function ServiceLock() {
 
             <ul className="mt-10 space-y-4">
               {[
-                "Instant SMS response on every missed call",
+                "Instant response on every missed call",
                 "Lead details captured while intent is still high",
                 "Warm handoff so your callback starts with context",
                 "Fast onboarding designed to get you live quickly",
