@@ -334,7 +334,7 @@ export default function ServiceLock() {
             <p className="font-medium text-white">Try the Live Demo</p>
             <p className="mt-2 leading-relaxed text-zinc-400">
               Call or text {DISPLAY_NUMBER} to experience the missed-call flow
-              for yourself and see exactly how it works.
+              for yourself and see exactly how it works. By calling, you agree to receive a demonstration SMS. Reply STOP to opt out.
             </p>
             <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
               <a
