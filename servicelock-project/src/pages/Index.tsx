@@ -60,7 +60,7 @@ const nextStepCards = [
     eyebrow: "Live Demo",
     title: "Try the Live Demo",
     description:
-      "Call or text 470-408-5618 to experience the missed-call flow for yourself and see exactly how it works.",
+      "Call or text 470-408-5618 to experience the missed-call flow for yourself and see exactly how it works. By calling, you agree to receive a demonstration SMS. Reply STOP to opt out.",
     ctaLabel: "Call the Demo Line",
     href: `tel:${DEMO_NUMBER}`,
     secondaryLabel: "Text the Demo Line",
